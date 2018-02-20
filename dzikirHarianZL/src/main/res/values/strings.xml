@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, InitApp!</string>
+    <string name="app_name">Dzikir Harian</string>
+    <string name="default_header_text">Dzikir Harian</string>
+    
+    <!-- update checking, download and rate url -->
+    <string name="app_update_checking_url">https://zaitunlabs.com/dzikirharian/dzikir_resource_update.php</string>
+    <string name="download_link">https://www.zaitunlabs.com/dzikirharian/app/download/android</string>
+    <string name="rate_link">https://www.zaitunlabs.com/dzikirharian/app/rate/android</string>
+    
+    <!-- backsound -->
+    <string name="backsound_1">gemericik_air_kicau.mp3</string>
+    <string name="backsound_2">gemericik_air_kicau.mp3</string>
+    
+    <!-- dialog initial app -->
+    <string name="title_dialog_init">update</string>
+    <string name="message_dialog_init">new update already exist</string>
+    <string name="download_option_dialog_init">download</string>
+    <string name="close_option_dialog_init">close</string>
+    <string name="use_existing_option_dialog_init">use existing</string>
+     
+    <!-- feedback and share in about -->
+    <string name="feedback_mail_to">cs@zaitunlabs.com</string>
+    <string name="feedback_title">feedback for dzikir harian</string>
+    <string name="feedback_body_template"></string>
+    <string name="share_title">dzikir harian by zaitunlabs</string>
+    <string name="share_body_template">silahkan download aplikasi dzikir harian dari zaitunlabs di link \n\nhttps://www.zaitunlabs.com/dzikirharian/app/download/android \n\nuntuk info lebih lanjut https://zaitunlabs.com/dzikir-harian/</string>
+    
+    <!-- ACRA strings -->
+    <string name="crash_mail_to">cs@zaitunlabs.com</string>
+    <string name="crash_toast_text">Ooooops ! I crashed, a report need to be sent to my developer to help fix the issue !</string>
+    <string name="crash_notif_ticker_text">Unexpected error, please send a report</string>
+    <string name="crash_notif_title">CrashTest has crashed</string>
+    <string name="crash_notif_text">Please click here to help fix the issue.</string>
+    <string name="crash_dialog_title">CrashTest has crashed</string>
+    <string name="crash_dialog_text">An unexpected error occurred forcing the
+    application to stop. Please help us fix this by sending us error data,
+    all you have to do is click OK.</string>
+    <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
+    <string name="crash_dialog_ok_toast">Thank you !</string>
+
+</resources>

@@ -1,0 +1,11 @@
+[
+
+    {
+        "item": "Waktu membaca dzikir pagi",
+        "description": "antara shubuh hingga terbit matahari"
+    },
+	{
+        "item": "Waktu membaca dzikir petang",
+        "description": "antara 'ashar hingga terbenam matahari"
+    }
+]

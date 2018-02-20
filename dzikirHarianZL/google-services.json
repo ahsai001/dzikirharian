@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "925565918615",
+    "firebase_url": "https://dzikir-harian.firebaseio.com",
+    "project_id": "dzikir-harian",
+    "storage_bucket": "dzikir-harian.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925565918615:android:72e8569cb4d8aa2e",
+        "android_client_info": {
+          "package_name": "com.zaitunlabs.dzikirharian"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925565918615-mlbori1mbe40luv4kn6ppsf9jo0leav1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA03D8SFrvTStZ-PP2o9G0nkrBiGCedgQI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
