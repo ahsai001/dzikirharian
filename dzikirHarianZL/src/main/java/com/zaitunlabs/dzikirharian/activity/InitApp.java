@@ -36,7 +36,7 @@ public class InitApp extends ZaitunSplashActivity {
         setMilisInFuture(200);
         setMilisInterval(100);
 
-		final Class nextClass = (Class) CommonUtils.getSerializableIntent(getIntent(),ARG_NEXT_ACTIVITY_CLASS,NewPage.class);
+		final Class nextClass = (Class) CommonUtils.getSerializableIntent(getIntent(),ARG_NEXT_ACTIVITY_CLASS,HomePage.class);
 
         setRunnableCodeAfterSplashExpired(new Runnable() {
 			@Override
