@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rateme">Rate our app in the Play Store</string>
+    <string name="message">How would you rate our app?</string>
+    <string name="title">Rate your experience</string>
+    <string name="title_activity_dialog">Rate Me</string>
+    <string name="no_thanks">Submit</string>
+    <string name="message_confirm_dialog">Would you mind sharing your feedback?</string>
+    <string name="subject_email">Feedback Rating for </string>
+</resources>

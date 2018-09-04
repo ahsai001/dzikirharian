@@ -38,10 +38,10 @@ import com.zaitunlabs.dzikirharian.adapter.PageListAdapter;
 import com.zaitunlabs.dzikirharian.model.DzikirModel;
 import com.zaitunlabs.zlcore.modules.shaum_sholat.CountDownSholatReminderUtils;
 import com.zaitunlabs.zlcore.core.CanvasActivity;
+import com.zaitunlabs.zlcore.utils.FileUtils;
 import com.zaitunlabs.zlcore.utils.audio.AudioService;
 import com.zaitunlabs.zlcore.utils.audio.AudioServiceCallBack;
 import com.zaitunlabs.zlcore.utils.audio.BackSoundService;
-import com.zaitunlabs.zlcore.utils.FileAccess;
 import com.zaitunlabs.zlcore.utils.CommonUtils;
 import com.zaitunlabs.zlcore.utils.DebugUtils;
 import com.zaitunlabs.zlcore.utils.Prefs;
@@ -105,6 +105,8 @@ public class DzikirBoard extends CanvasActivity {
 
 
 	ASTextView countDownTimerHeaderText;
+	SwitchCompat keepScreenOnSwitch;
+
 	CountDownSholatReminderUtils countDownSholatReminderUtils;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -163,8 +165,7 @@ public class DzikirBoard extends CanvasActivity {
 		countDownTimerHeaderText.setText("");
 		countDownTimerHeaderText.setTextSize(18);
 		countDownTimerHeaderText.setTextColor(Color.WHITE);
-		countDownTimerHeaderText.setPadding(0,0,20,0);
-		countDownTimerHeaderText.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+		countDownTimerHeaderText.setGravity(Gravity.END|Gravity.CENTER_VERTICAL);
 		subHeaderSection.addViewWithFrame(countDownTimerHeaderText, 0, 0, 100, 100);
 		
 		
@@ -213,7 +214,7 @@ public class DzikirBoard extends CanvasActivity {
 		runText.setRndDuration(7000);
 
 
-		SwitchCompat keepScreenOnSwitch = new SwitchCompat(this);
+		keepScreenOnSwitch = new SwitchCompat(this);
 		keepScreenOnSwitch.setShowText(false);
 		keepScreenOnSwitch.setText("standby");
 		keepScreenOnSwitch.setTextColor(Color.WHITE);
@@ -222,8 +223,10 @@ public class DzikirBoard extends CanvasActivity {
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				if(isChecked){
 					getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+					Prefs.with(buttonView.getContext()).save("standby",true);
 				}else{
 					getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+					Prefs.with(buttonView.getContext()).save("standby",false);
 				}
 			}
 		});
@@ -625,7 +628,7 @@ public class DzikirBoard extends CanvasActivity {
 		ObjectMapper mapper = new ObjectMapper();
 	    try {
 	    	final CollectionType javaType = mapper.getTypeFactory().constructCollectionType(List.class, DzikirModel.class);	    
-	    	data = mapper.readValue(FileAccess.getStringFromRawFile(this, rawJSONFile), javaType);
+	    	data = mapper.readValue(FileUtils.getStringFromRawFile(this, rawJSONFile), javaType);
 		} catch (JsonParseException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
@@ -831,17 +834,20 @@ public class DzikirBoard extends CanvasActivity {
 	protected void onStart() {
 		super.onStart();
 		if(previousSavedPage > 0) {
-			CommonUtils.showDialog2Option(this, "Perhatian", "Apakah anda ingin membuka dari halaman pertama?",
+			CommonUtils.showDialog2Option(this, "Perhatian", "Apakah anda ingin melanjutkan sesi sebelumnya?",
 					"Ya", new Runnable() {
 						@Override
 						public void run() {
-							previousSavedPage = 0;
-							navHandler.setIndex(0);
+							//do nothing
+							if(Prefs.with(DzikirBoard.this).getBoolean("standby", false)){
+								keepScreenOnSwitch.setChecked(true);
+							}
 						}
 					}, "Tidak", new Runnable() {
 						@Override
 						public void run() {
-							//do nothing
+							previousSavedPage = 0;
+							navHandler.setIndex(0);
 						}
 					});
 		}

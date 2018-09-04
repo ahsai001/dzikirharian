@@ -167,3 +167,48 @@
 
 -dontwarn com.google.android.gms.**
 -dontwarn com.google.firebase.messaging.**
+
+
+
+
+#Retrofit
+
+# Platform calls Class.forName on types which do not exist on Android to determine platform.
+-dontnote retrofit2.Platform
+# Platform used when running on Java 8 VMs. Will not be used at runtime.
+-dontwarn retrofit2.Platform$Java8
+# Retain generic type information for use by reflection by converters and adapters.
+-keepattributes Signature
+# Retain declared checked exceptions for use by a Proxy instance.
+-keepattributes Exceptions
+
+
+#picasso
+-dontwarn com.squareup.okhttp.**
+
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+-dontwarn javax.annotation.**
+
+
+-keep class com.zaitunlabs.zlcore.modules.about.** { *;}
+
+
+#activeandroid
+-keep class com.activeandroid.** { *; }
+-keep class * extends com.activeandroid.Model
+-keep class * extends com.activeandroid.serializer.TypeSerializer
+-keep public class * extends com.activeandroid.ActiveRecordBase
+
+-keep class com.zaitunlabs.dzikirharian.model.** { *;}
+-keep class com.zaitunlabs.dzikirharian.model.* { *;}
+
+-keep class com.zaitunlabs.zlcore.models.** { *;}
+-keep class com.zaitunlabs.zlcore.models.* { *;}
+
+-keepattributes *Column*
+-keepattributes *Table*
+-keepattributes *Annotation*
+
+-keepclasseswithmembers class * { @com.activeandroid.annotation.Column <fields>; }

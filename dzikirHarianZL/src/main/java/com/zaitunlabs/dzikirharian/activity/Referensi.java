@@ -30,7 +30,7 @@ import com.zaitunlabs.zlcore.modules.about.SimpleExpandableDataModel;
 import com.zaitunlabs.zlcore.modules.about.SimpleItemDescriptionModel;
 import com.zaitunlabs.zlcore.modules.shaum_sholat.CountDownSholatReminderUtils;
 import com.zaitunlabs.zlcore.core.CanvasActivity;
-import com.zaitunlabs.zlcore.utils.FileAccess;
+import com.zaitunlabs.zlcore.utils.FileUtils;
 import com.zaitunlabs.zlcore.views.ASTextView;
 import com.zaitunlabs.zlcore.views.CanvasLayout;
 import com.zaitunlabs.zlcore.views.CanvasSection;
@@ -80,7 +80,7 @@ public class Referensi extends CanvasActivity {
 		countDownTimerHeaderText.setText("");
 		countDownTimerHeaderText.setTextSize(18);
 		countDownTimerHeaderText.setTextColor(Color.WHITE);
-		countDownTimerHeaderText.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        countDownTimerHeaderText.setGravity(Gravity.END|Gravity.CENTER_VERTICAL);
 		canvas.addViewWithFrame(countDownTimerHeaderText, 51, 12, 50, 10);
 
 		// create 78 % area with canvassection
@@ -92,7 +92,7 @@ public class Referensi extends CanvasActivity {
 		listView.setDividerHeight(3);
 		mainSection.addViewInLinearLayout(listView);
 
-		SimpleExpandableListAdapter adapter = new SimpleExpandableListAdapter(this,createData());
+		SimpleExpandableListAdapter adapter = new SimpleExpandableListAdapter(this,createData(), true );
 		
 		if (VERSION.SDK_INT > 19) {
 			AnimationSet set = new AnimationSet(true);
@@ -156,7 +156,7 @@ public class Referensi extends CanvasActivity {
 		ObjectMapper mapper = new ObjectMapper();
 	    try {
 	    	final CollectionType javaType = mapper.getTypeFactory().constructCollectionType(List.class, SimpleItemDescriptionModel.class);	    
-	    	data = mapper.readValue(FileAccess.getStreamFromRawFile(this, R.raw.referensi), javaType);
+	    	data = mapper.readValue(FileUtils.getStreamFromRawFile(this, R.raw.referensi), javaType);
 		} catch (JsonParseException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {

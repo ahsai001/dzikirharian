@@ -56,7 +56,7 @@ public class DzikirSetelahSholat extends CanvasActivity {
 		countDownTimerHeaderText.setText("");
 		countDownTimerHeaderText.setTextSize(18);
 		countDownTimerHeaderText.setTextColor(Color.WHITE);
-		countDownTimerHeaderText.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+		countDownTimerHeaderText.setGravity(Gravity.END|Gravity.CENTER_VERTICAL);
 		canvas.addViewWithFrame(countDownTimerHeaderText, 51, 12, 50, 10);
 
 		//create 78 % area with canvassection

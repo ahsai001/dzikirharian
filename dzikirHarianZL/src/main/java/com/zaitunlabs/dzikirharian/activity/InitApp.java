@@ -11,11 +11,11 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
+import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.zlcore.api.APIResponse;
-import com.zaitunlabs.zlcore.api.models.CheckVersionModel;
 import com.zaitunlabs.zlcore.utils.HttpClientUtils;
 import com.zaitunlabs.zlcore.utils.PermissionUtils;
 import com.zaitunlabs.zlcore.utils.audio.BackSoundService;
@@ -35,6 +35,7 @@ public class InitApp extends ZaitunSplashActivity {
         setImageSplash(R.drawable.splashscreen);
         setMilisInFuture(200);
         setMilisInterval(100);
+
 
 		final Class nextClass = (Class) CommonUtils.getSerializableIntent(getIntent(),ARG_NEXT_ACTIVITY_CLASS,HomePage.class);
 

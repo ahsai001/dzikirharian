@@ -1,5 +1,14 @@
 [
     {
+        "item": "version 1.15.22.34",
+        "description": "- bug fixing : crash saat membuka aplikasi, mohon maaf atas ketidaknyamanannya"
+    },{
+        "item": "version 1.15.21.33",
+        "description": "- bug fixing : crash saat membuka aplikasi pada beberapa smartphone\n- mengubah beberapa atribut tema\n- mengubah wording dialog saat masuk ke dzikir board dan menyimpan status standby"
+    },{
+        "item": "version 1.15.20.30",
+        "description": "- merubah crash report to crashlytics"
+    },{
         "item": "version 1.15.19.29",
         "description": "- perbaikan crash saat ada notifikasi pembaruan aplikasi jika kuota internet habis\n- mengubah beberapa properti UI\n- menambahkan fitur pengingat waktu mundur untuk sholat\n- menambah fitur pengingat shaum/puasa"
     },{
