@@ -1,5 +1,8 @@
 [
     {
+        "item": "version 1.18.23.38",
+        "description": "- perbaikan ui movable menu, history\n- penambahan halaman informasi, toko dan rekomendasi\n- perbaikan kecil lainnya"
+    },{
         "item": "version 1.15.22.34",
         "description": "- bug fixing : crash saat membuka aplikasi, mohon maaf atas ketidaknyamanannya"
     },{

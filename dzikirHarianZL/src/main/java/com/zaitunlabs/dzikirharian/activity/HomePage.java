@@ -10,10 +10,15 @@ import android.widget.ImageView.ScaleType;
 
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.dzikirharian.receivers.ManageDzikirReminderReceiver;
+import com.zaitunlabs.zlcore.activities.AppListActivity;
+import com.zaitunlabs.zlcore.activities.MessageListActivity;
+import com.zaitunlabs.zlcore.activities.StoreActivity;
+import com.zaitunlabs.zlcore.api.APIConstant;
 import com.zaitunlabs.zlcore.modules.about.AboutUs;
 import com.zaitunlabs.zlcore.modules.shaum_sholat.CountDownSholatReminderUtils;
 import com.zaitunlabs.zlcore.core.CanvasActivity;
 import com.zaitunlabs.zlcore.modules.shaum_sholat.ManageShaumSholatReminderReceiver;
+import com.zaitunlabs.zlcore.services.FCMIntentService;
 import com.zaitunlabs.zlcore.views.ASTextView;
 import com.zaitunlabs.zlcore.views.ASAnimatedImageView;
 import com.zaitunlabs.zlcore.views.CanvasLayout;
@@ -89,7 +94,7 @@ public class HomePage extends CanvasActivity {
 		
 		ASAnimatedImageView dzpgImage = new ASAnimatedImageView(this);
 		dzpgImage.setImageResource(R.drawable.menu_dzikir_pagi_petang);
-		dzpgImage.setLeftImage(R.drawable.masjid);
+		dzpgImage.setLeftImage(R.drawable.masjid_bulan);
 		dzpgImage.setRightImage(R.drawable.arrow_right);
 		dzpgImage.setScaleType(ScaleType.FIT_XY);
 		dzpgImage.setTextSize(20);
@@ -106,7 +111,7 @@ public class HomePage extends CanvasActivity {
 		
 		ASAnimatedImageView dzssImage = new ASAnimatedImageView(this);
 		dzssImage.setImageResource(R.drawable.menu_dxikir_sesudah_sholat);
-		dzssImage.setLeftImage(R.drawable.masjid_bulan);
+		dzssImage.setLeftImage(R.drawable.masjid);
 		dzssImage.setRightImage(R.drawable.arrow_right);
 		dzssImage.setScaleType(ScaleType.FIT_XY);
 		dzssImage.setTextSize(20);
@@ -138,25 +143,80 @@ public class HomePage extends CanvasActivity {
 			}
 		});
 		
-		ASAnimatedImageView abc = new ASAnimatedImageView(this);
-		abc.setImageResource(R.drawable.menu_faedah_dan_referensi);
-		abc.setLeftImage(R.drawable.buku);
-		abc.setRightImage(R.drawable.arrow_right);
-		abc.setScaleType(ScaleType.FIT_XY);
-		abc.setTextSize(20);
-		abc.setText("Tentang Aplikasi");
-		abc.setTypeFace(Typeface.createFromAsset(this.getAssets(), "fonts/albino/albino.ttf"));
-		mainSection.addViewWithFrame(abc, 10, 100, 80, 20);
-		abc.setOnClickListener(new View.OnClickListener() {
+		ASAnimatedImageView infoPage = new ASAnimatedImageView(this);
+		infoPage.setImageResource(R.drawable.menu_faedah_dan_referensi);
+		infoPage.setLeftImage(R.drawable.baseline_notification_important_24);
+		infoPage.setRightImage(R.drawable.arrow_right);
+		infoPage.setScaleType(ScaleType.FIT_XY);
+		infoPage.setTextSize(20);
+		infoPage.setText("Informasi");
+		infoPage.setTypeFace(Typeface.createFromAsset(this.getAssets(), "fonts/albino/albino.ttf"));
+		mainSection.addViewWithFrame(infoPage, 10, 100, 80, 20);
+		infoPage.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				MessageListActivity.start(HomePage.this);
+			}
+		});
+
+
+
+		ASAnimatedImageView storePage = new ASAnimatedImageView(this);
+		storePage.setImageResource(R.drawable.menu_faedah_dan_referensi);
+		storePage.setLeftImage(R.drawable.ic_shop_24dp);
+		storePage.setRightImage(R.drawable.arrow_right);
+		storePage.setScaleType(ScaleType.FIT_XY);
+		storePage.setTextSize(20);
+		storePage.setText("Toko");
+		storePage.setTypeFace(Typeface.createFromAsset(this.getAssets(), "fonts/albino/albino.ttf"));
+		mainSection.addViewWithFrame(storePage, 10, 124, 80, 20);
+		storePage.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				StoreActivity.start(HomePage.this);
+			}
+		});
+
+
+		ASAnimatedImageView recAppPage = new ASAnimatedImageView(this);
+		recAppPage.setImageResource(R.drawable.menu_faedah_dan_referensi);
+		recAppPage.setLeftImage(R.drawable.baseline_apps_24);
+		recAppPage.setRightImage(R.drawable.arrow_right);
+		recAppPage.setScaleType(ScaleType.FIT_XY);
+		recAppPage.setTextSize(20);
+		recAppPage.setText("Rekomendasi Aplikasi");
+		recAppPage.setTypeFace(Typeface.createFromAsset(this.getAssets(), "fonts/albino/albino.ttf"));
+		mainSection.addViewWithFrame(recAppPage, 10, 148, 80, 20);
+		recAppPage.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				AppListActivity.start(HomePage.this);
+			}
+		});
+
+
+		ASAnimatedImageView aboutAppPage = new ASAnimatedImageView(this);
+		aboutAppPage.setImageResource(R.drawable.menu_faedah_dan_referensi);
+		aboutAppPage.setLeftImage(R.drawable.ic_info_outline_24dp);
+		aboutAppPage.setRightImage(R.drawable.arrow_right);
+		aboutAppPage.setScaleType(ScaleType.FIT_XY);
+		aboutAppPage.setTextSize(20);
+		aboutAppPage.setText("Tentang Aplikasi");
+		aboutAppPage.setTypeFace(Typeface.createFromAsset(this.getAssets(), "fonts/albino/albino.ttf"));
+		mainSection.addViewWithFrame(aboutAppPage, 10, 172, 80, 20);
+		aboutAppPage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				AboutUs.start(HomePage.this,R.drawable.icon_apps,
-						R.drawable.icon_share_to_friend, R.string.share_title, R.string.share_body_template,
-						R.drawable.icon_share_to_friend, R.string.feedback_mail_to, R.string.feedback_title, R.string.feedback_body_template,
-						R.drawable.icon_rate_this_app,
+						0, R.string.share_title, R.string.share_body_template,
+						0, R.string.feedback_mail_to, R.string.feedback_title, R.string.feedback_body_template,
+						0,
 						R.raw.version_change_history, false,"https://zaitunlabs.com/dzikir-harian/");
 			}
 		});
+
+		View spaceView = new View(this);
+		mainSection.addViewWithFrame(spaceView, 10, 192, 80,4);
 
 		setContentView(canvas.getFillParentView());
 
@@ -176,6 +236,7 @@ public class HomePage extends CanvasActivity {
 		super.onResume();
 		countDownSholatReminderUtils.startCountDown(this,countDownTimerHeaderText);
 
+		FCMIntentService.startSending(this,APIConstant.API_APPID,false);
 	}
 
 	@Override

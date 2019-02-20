@@ -1,15 +1,10 @@
 package com.zaitunlabs.dzikirharian.activity;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.type.CollectionType;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
@@ -20,7 +15,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.SwitchCompat;
+import androidx.appcompat.widget.SwitchCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -32,7 +27,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.squareup.picasso.Picasso;
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.dzikirharian.adapter.PageListAdapter;
 import com.zaitunlabs.dzikirharian.model.DzikirModel;
@@ -134,15 +131,6 @@ public class DzikirBoard extends CanvasActivity {
 		headerSection.getShiftPositionHandler().addRectToDimensionState(0, 0, 100, 12);
 		headerSection.getShiftPositionHandler().addRectToDimensionState(0, -12, 100, 12);
 		headerSection.addViewWithFrame(headerText, 0, 0, 100, 100);
-
-		headerSection.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if(getMovableMenu()!=null){
-					getMovableMenu().openMenu(true);
-				}
-			}
-		});
 		
 
 		// subheader
@@ -279,9 +267,9 @@ public class DzikirBoard extends CanvasActivity {
 					pageView.setText("pilih halaman ...");
 					final ListView listV = new ListView(DzikirBoard.this);
 					listV.setCacheColorHint(Color.TRANSPARENT);
-					listV.setDividerHeight(10);
-					listV.setScrollingCacheEnabled(false);
-					listV.setAnimationCacheEnabled(false);
+					
+					pageContent.addViewInLinearLayout(listV);
+
 					listV.setAdapter(new PageListAdapter(DzikirBoard.this, bacaanList));
 					listV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 						@Override
@@ -290,9 +278,6 @@ public class DzikirBoard extends CanvasActivity {
 							navHandler.setIndex(arg2);
 						}
 					});
-					listV.setFastScrollEnabled(true);
-					
-					pageContent.addViewInLinearLayout(listV);
 					
 					//listV.clearFocus();
 					listV.postDelayed(new Runnable() {
@@ -309,7 +294,7 @@ public class DzikirBoard extends CanvasActivity {
 		
 		// bagian navigasi
 		final CanvasSection navView = slidingPageSelectorCanvas.addSubSectionWithFrame("navView", 0, 0, 100, 10, true);
-		navView.ShiftTarget(slidingPageSelectorCanvas, true, false, true, false);
+		navView.shiftTarget(slidingPageSelectorCanvas, true, false, true, false);
 		
 		//final CanvasSection navView = mainSection.addSubSectionWithFrame("navView", 0, 90, 100, 10, true);
 		navView.setBackgroundResource(R.drawable.bgheader);
@@ -364,17 +349,25 @@ public class DzikirBoard extends CanvasActivity {
 				String bacaanString = bacaanList.get(index);
 				String[] bacaanArray = bacaanString.split(",");
 				if(bacaanArray.length == 4){ //handle dzikir sesudah sholat alhamdu, subhanallah, allahuakbar, laa ilaha
-					ImageLoader.getInstance().displayImage("drawable://" +CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[0]), iv);
-					ImageLoader.getInstance().displayImage("drawable://" +CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[1]), iv2);
-					ImageLoader.getInstance().displayImage("drawable://" +CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[2]), iv3);
-					ImageLoader.getInstance().displayImage("drawable://" +CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[3]), iv4);
+					//Picasso.get().load(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[0])).into(iv);
+					//Picasso.get().load(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[1])).into(iv2);
+					//Picasso.get().load(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[2])).into(iv3);
+					//Picasso.get().load(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[3])).into(iv4);
+
+					iv.setImageResource(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[0]));
+					iv2.setImageResource(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[1]));
+					iv3.setImageResource(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[2]));
+					iv4.setImageResource(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[3]));
+
 
 					iv2.setVisibility(View.VISIBLE);
 					iv3.setVisibility(View.VISIBLE);
 					iv4.setVisibility(View.VISIBLE);
 
 				}else {
-					ImageLoader.getInstance().displayImage("drawable://" +CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanString), iv);
+					//Picasso.get().load(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanString)).into(iv);
+					iv.setImageResource(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanString));
+
 					iv2.setImageDrawable(null);
 					iv3.setImageDrawable(null);
 					iv4.setImageDrawable(null);
@@ -383,7 +376,7 @@ public class DzikirBoard extends CanvasActivity {
 					iv4.setVisibility(View.GONE);
 				}
 
-				ImageLoader.getInstance().displayImage("drawable://" + counterList.get(index), countImageView.getImageView());
+				Picasso.get().load("drawable://" + counterList.get(index)).into(countImageView.getImageView());
 
 				tv.setText(terjemahList.get(index));
 				
@@ -399,7 +392,7 @@ public class DzikirBoard extends CanvasActivity {
 		//mainSection.getShiftPositionHandler().addRectToDimensionState(0, 22, 100, 78);
 		//mainSection.getShiftPositionHandler().addRectToDimensionState(-80, 22, 100, 78);
 		//mainSection.getShiftPositionHandler().setMinMaxLocationXY(-80, 0, 22, 22);
-		//mainSection.ShiftTarget(mainSection, false, true, true, false);
+		//mainSection.shiftTarget(mainSection, false, true, true, false);
 		/* =================================================  */
 		
 	
@@ -625,19 +618,11 @@ public class DzikirBoard extends CanvasActivity {
 		}
 
 		// set data
-		ObjectMapper mapper = new ObjectMapper();
-	    try {
-	    	final CollectionType javaType = mapper.getTypeFactory().constructCollectionType(List.class, DzikirModel.class);	    
-	    	data = mapper.readValue(FileUtils.getStringFromRawFile(this, rawJSONFile), javaType);
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 
-	    Iterator<DzikirModel> iterator = data.iterator();
+		data = new Gson().fromJson(FileUtils.getReaderFromRawFile(this, rawJSONFile), new TypeToken<List<DzikirModel>>(){}.getType());
+
+
+		Iterator<DzikirModel> iterator = data.iterator();
 	    while(iterator.hasNext()){
 	    	DzikirModel item = iterator.next();
 	    	bacaanList.add(item.getBacaan());

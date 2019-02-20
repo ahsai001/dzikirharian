@@ -8,7 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +28,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.gson.Gson;
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.zlcore.core.CanvasActivity;
-import com.zaitunlabs.zlcore.services.UploadIntentService;
+import com.zaitunlabs.zlcore.services.DataIntentService;
 import com.zaitunlabs.zlcore.utils.CommonUtils;
 import com.zaitunlabs.zlcore.utils.HttpClientUtils;
 import com.zaitunlabs.zlcore.utils.NotificationProgressUtils;
@@ -136,17 +136,19 @@ public class NewPage extends CanvasActivity {
 				if(resultCode == RESULT_OK){
 					selectedImage = getRealPathFromURI(this,data.getData());
 
-					UploadIntentService.Headers headers= new UploadIntentService.Headers();
-					headers.addItem("x-device",CommonUtils.getMeid(this));
+					DataIntentService.HeaderParts headerParts= new DataIntentService.HeaderParts();
+					headerParts.addItem("x-device",CommonUtils.getMeid(this));
 
-					UploadIntentService.Parts parts = new UploadIntentService.Parts();
-					parts.addItem("title",titleEditText.getText().toString());
-					parts.addItem("tags",tagEditText.getText().toString());
-					parts.addItem("desc",descEditText.getText().toString());
+					DataIntentService.BodyParts bodyParts = new DataIntentService.BodyParts();
+					bodyParts.addItem("title",titleEditText.getText().toString());
+					bodyParts.addItem("tags",tagEditText.getText().toString());
+					bodyParts.addItem("desc",descEditText.getText().toString());
 
-					UploadIntentService.startUpload(this,"http://gallery.ayaindonesia.com/api/saveGallery",
-							R.drawable.icon,"Upload Image", "Progress",24,"image",new File(selectedImage),
-							headers,parts);
+					DataIntentService.FileParts fileParts = new DataIntentService.FileParts();
+					fileParts.addItem("image", new File(selectedImage));
+
+					DataIntentService.startUpload(this, "http://gallery.ayaindonesia.com/api/saveGallery",R.drawable.icon,"Upload Image","Progress",
+							24,fileParts,headerParts,bodyParts,null,"upload");
 
 
 				}

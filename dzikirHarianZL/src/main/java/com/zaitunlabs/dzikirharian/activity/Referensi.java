@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.type.CollectionType;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -24,6 +20,9 @@ import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
+import com.google.gson.reflect.TypeToken;
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.zlcore.modules.about.SimpleExpandableListAdapter;
 import com.zaitunlabs.zlcore.modules.about.SimpleExpandableDataModel;
@@ -37,7 +36,7 @@ import com.zaitunlabs.zlcore.views.CanvasSection;
 import com.zaitunlabs.zlcore.views.GoToTopView;
 import com.zaitunlabs.zlcore.views.GoToTopView.IGoToTopAction;
 
-public class Referensi extends CanvasActivity {
+public class  Referensi extends CanvasActivity {
 
 	ASTextView countDownTimerHeaderText;
 	CountDownSholatReminderUtils countDownSholatReminderUtils;
@@ -153,17 +152,8 @@ public class Referensi extends CanvasActivity {
 
 		// set data
 		List<SimpleItemDescriptionModel> data = null;
-		ObjectMapper mapper = new ObjectMapper();
-	    try {
-	    	final CollectionType javaType = mapper.getTypeFactory().constructCollectionType(List.class, SimpleItemDescriptionModel.class);	    
-	    	data = mapper.readValue(FileUtils.getStreamFromRawFile(this, R.raw.referensi), javaType);
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+	    data = new Gson().fromJson(FileUtils.getReaderFromRawFile(this, R.raw.referensi), new TypeToken<List<SimpleItemDescriptionModel>>(){}.getType());
 		
 	    Iterator<SimpleItemDescriptionModel> iterator = data.iterator();
 	    int i = 0;

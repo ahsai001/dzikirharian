@@ -8,11 +8,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.PowerManager;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.dzikirharian.activity.DzikirBoard;
-import com.zaitunlabs.dzikirharian.activity.InitApp;
+import com.zaitunlabs.dzikirharian.activity.InitAppNew;
 import com.zaitunlabs.dzikirharian.services.DzikirReminderService;
 import com.zaitunlabs.zlcore.utils.CommonUtils;
 import com.zaitunlabs.zlcore.utils.IntegerIDUtils;
@@ -27,7 +27,7 @@ import java.util.Date;
 public class DzikirReminderReceiver extends BroadcastReceiver {
     private final int NOTIFICATION_ID_FOR_REMINDER = 100;
 
-    final public static String reminderReceiverTAG = "DzikirReminderReceiver";
+    final public static String reminderReceiverTAG = "dh:DzikirReminderReceiver";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -46,7 +46,7 @@ public class DzikirReminderReceiver extends BroadcastReceiver {
     private void showNotification(Context context, boolean isShow,  String message){
         NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         if(isShow) {
-            Intent intent = new Intent(context, InitApp.class);
+            Intent intent = new Intent(context, InitAppNew.class);
 
             Notification notification = null;
 
@@ -64,8 +64,8 @@ public class DzikirReminderReceiver extends BroadcastReceiver {
                 timeMessage += " - "+calendar.get(Calendar.HOUR_OF_DAY)+":"+(minutes>9?minutes:"0"+minutes);
 
 
-                intent.putExtra(InitApp.ARG_NEXT_ACTIVITY_CLASS, DzikirBoard.class);
-                intent.putExtra(InitApp.ARG_DATA,"petang");
+                intent.putExtra(InitAppNew.ARG_NEXT_ACTIVITY_CLASS, DzikirBoard.class);
+                intent.putExtra(InitAppNew.ARG_DATA,"petang");
             }else if(message.contains("pagi")){
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(new Date(Prefs.with(context).getLong(DzikirReminderService.START_PAGI_TIME,0)));
@@ -76,8 +76,8 @@ public class DzikirReminderReceiver extends BroadcastReceiver {
                 minutes = calendar.get(Calendar.MINUTE);
                 timeMessage += " - "+calendar.get(Calendar.HOUR_OF_DAY)+":"+(minutes>9?minutes:"0"+minutes);
 
-                intent.putExtra(InitApp.ARG_NEXT_ACTIVITY_CLASS, DzikirBoard.class);
-                intent.putExtra(InitApp.ARG_DATA,"pagi");
+                intent.putExtra(InitAppNew.ARG_NEXT_ACTIVITY_CLASS, DzikirBoard.class);
+                intent.putExtra(InitAppNew.ARG_DATA,"pagi");
             }
 
 

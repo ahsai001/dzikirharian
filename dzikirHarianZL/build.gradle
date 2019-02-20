@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 28
+    //buildToolsVersion "26.0.2"
 
     defaultConfig {
         applicationId "com.zaitunlabs.dzikirharian"
         minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 21
+        targetSdkVersion 28
+        versionCode 22
         //versionName "1.9.9.8" --> 9
         //versionName "1.9.10.9" --> 10
         //versionName "1.9.11.12" --> 11
@@ -23,7 +23,9 @@ android {
         //versionName "1.15.20.30" --> 19
         //versionName "1.15.21.33" --> 20
 
-        versionName "1.15.22.34"
+        //versionName "1.15.22.34" -> 21
+
+        versionName "1.18.23.38"
 
         multiDexEnabled true
 
@@ -55,36 +57,52 @@ android {
 }
 
 repositories {
+    mavenCentral()
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url 'http://dl.bintray.com/amulyakhare/maven' }
+    maven { url 'https://mvnrepository.com/artifact/ch.acra/acra' }
+    maven { url "https://jitpack.io" }
 }
 dependencies {
-    compile project(':libraryRateMe')
+    //implementation project(':libraryRateMe')
     //compile files('libs/acra-4.5.0.jar')
     //compile files('libs/andengine-gles2.jar')
-    compile 'com.loopj.android:android-async-http:1.4.9'
+    //implementation 'com.loopj.android:android-async-http:1.4.9'
     //compile files('libs/android-iconify-1.0.6.jar')
     //compile files('libs/android-query-full.0.26.8.jar')
     //compile files('libs/autotextview-0.2.0.jar')
     //compile files('libs/crouton-1.8.5.jar')
     //compile files('libs/crouton-library-1.8.2.jar')
     //compile files('libs/eventbus-2.2.1.jar')
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile files('libs/jackson-core-asl-1.9.13.jar')
-    compile files('libs/jackson-mapper-asl-1.9.13.jar')
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //implementation files('libs/jackson-core-asl-1.9.13.jar')
+    //implementation files('libs/jackson-mapper-asl-1.9.13.jar')
     //compile files('libs/otto-1.3.5.jar')
     //compile files('libs/picasso-2.3.2.jar')
     //compile files('libs/rapiddecoder-0.2.5.jar')
-    compile files('libs/socialauth-4.4.jar')
-    compile files('libs/socialauth-android-3.2.jar')
+    //implementation files('libs/socialauth-4.4.jar')
+    //implementation files('libs/socialauth-android-3.2.jar')
     //compile files('libs/support-v4-r7.jar')
-    compile files('libs/universal-image-loader-1.9.2.jar')
-    //compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.android.support:design:27.0.2'
-    compile 'com.google.android.gms:play-services-location:15.0.0'
-    compile 'com.google.firebase:firebase-core:15.0.2'
-    compile 'com.google.firebase:firebase-messaging:15.0.2'
-    compile 'com.crashlytics.sdk.android:crashlytics:2.9.1'
-    compile 'com.github.ahsai001:zlcore:1.0.1.0'
+    //implementation files('libs/universal-image-loader-1.9.2.jar')
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.google.android.material:material:1.1.0-alpha03'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
+
+
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+    implementation 'id.web.michsan.praytimes:praytimes:2.0.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-places:16.0.0'
+
+
+    implementation 'com.github.ahsai001:zlcore:1.1.23.26'
+    //implementation project(':zlcore')
 
 }
 

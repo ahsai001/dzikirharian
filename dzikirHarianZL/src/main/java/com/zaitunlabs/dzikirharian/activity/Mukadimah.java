@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.type.CollectionType;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -24,6 +20,8 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.LinearLayout;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.zlcore.modules.about.SimpleExpandableDataModel;
 import com.zaitunlabs.zlcore.modules.about.SimpleExpandableListAdapter;
@@ -152,19 +150,11 @@ public class Mukadimah extends CanvasActivity {
 
 		// set data
 		List<SimpleItemDescriptionModel> data = null;
-		ObjectMapper mapper = new ObjectMapper();
-	    try {
-	    	final CollectionType javaType = mapper.getTypeFactory().constructCollectionType(List.class, SimpleItemDescriptionModel.class);	    
-	    	data = mapper.readValue(FileUtils.getStreamFromRawFile(this, R.raw.mukadimah), javaType);
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	    Iterator<SimpleItemDescriptionModel> iterator = data.iterator();
+
+		data = new Gson().fromJson(FileUtils.getReaderFromRawFile(this, R.raw.mukadimah), new TypeToken<List<SimpleItemDescriptionModel>>(){}.getType());
+
+
+		Iterator<SimpleItemDescriptionModel> iterator = data.iterator();
 	    int i = 0;
 	    while(iterator.hasNext()){
 	    	SimpleItemDescriptionModel item = iterator.next();

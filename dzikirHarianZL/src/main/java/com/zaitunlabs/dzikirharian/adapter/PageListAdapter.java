@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.squareup.picasso.Picasso;
 import com.zaitunlabs.zlcore.utils.CommonUtils;
+import com.zaitunlabs.zlcore.utils.DebugUtils;
 import com.zaitunlabs.zlcore.views.ASTextView;
 import com.zaitunlabs.zlcore.views.TopCropImageView;
 
@@ -82,8 +85,10 @@ public class PageListAdapter extends BaseAdapter{
 			ll.addView(holder.getIv(), new LinearLayout.LayoutParams(0, height, 8));
 			ll.setTag(holder);
 			convertView = ll;
+            Log.e("ahmad", "new view");
 		}else{
 			holder = (ViewHolder) convertView.getTag();
+            Log.e("ahmad", "recycle view");
 		}
 		
 		//Point dim = CommonUtils.getImageDimension(context, imageList.get(position));
@@ -102,10 +107,20 @@ public class PageListAdapter extends BaseAdapter{
 		//set content
 		String bacaanString = imageList.get(position);
 		String[] bacaanArray = bacaanString.split(",");
+
+		Log.e("ahmad", bacaanString);
+		Log.e("ahmad", bacaanArray[0]);
+
 		if(bacaanArray.length == 4){ //handle dzikir sesudah sholat alhamdu, subhanallah, allahuakbar, laa ilaha
-			ImageLoader.getInstance().displayImage("drawable://" +CommonUtils.getIDResource(context, "drawable", bacaanArray[0]), holder.getIv());
+			//Picasso.get().load(CommonUtils.getIDResource(context, "drawable", bacaanArray[0])).into(holder.getIv());
+            ImageLoader.getInstance().displayImage("drawable://"+CommonUtils.getIDResource(context, "drawable", bacaanArray[0]), holder.getIv());
+            //holder.getIv().setImageResource(CommonUtils.getIDResource(context, "drawable", bacaanArray[0]));
+			//Log.e("ahmad", "picasso in action");
 		}else {
-			ImageLoader.getInstance().displayImage("drawable://" +CommonUtils.getIDResource(context, "drawable", bacaanString), holder.getIv());
+			//Picasso.get().load(CommonUtils.getIDResource(context, "drawable", bacaanString)).into(holder.getIv());
+            ImageLoader.getInstance().displayImage("drawable://"+CommonUtils.getIDResource(context, "drawable", bacaanString), holder.getIv());
+            //holder.getIv().setImageResource(CommonUtils.getIDResource(context, "drawable", bacaanString));
+			//Log.e("ahmad", "picasso in action 2");
 		}
 
 		/*

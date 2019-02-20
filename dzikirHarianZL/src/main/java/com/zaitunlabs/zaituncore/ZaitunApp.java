@@ -1,38 +1,36 @@
 package com.zaitunlabs.zaituncore;
 
-import org.acra.ACRA;
-import org.acra.ReportingInteractionMode;
-import org.acra.annotation.ReportsCrashes;
-import org.acra.collector.CrashReportData;
-import org.acra.sender.ReportSender;
-import org.acra.sender.ReportSenderException;
-
-import android.app.Application;
-import android.content.Context;
-import android.support.multidex.MultiDex;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.zaitunlabs.dzikirharian.R;
+import com.zaitunlabs.zlcore.api.APIConstant;
 import com.zaitunlabs.zlcore.core.BaseApplication;
-import com.zaitunlabs.zlcore.utils.ApplicationWacther;
-import com.zaitunlabs.zaitunutils.DzikirHarianUtils;
-import com.zaitunlabs.zlcore.utils.CommonUtils;
-import com.zaitunlabs.zlcore.utils.DebugUtils;
-import com.zaitunlabs.zlcore.utils.PlayServiceUtils;
-import com.zaitunlabs.zlcore.utils.audio.BackSoundService;
+import com.zaitunlabs.zlcore.models.AppListDataModel;
+import com.zaitunlabs.zlcore.models.AppListModel;
+import com.zaitunlabs.zlcore.models.AppListPagingModel;
+import com.zaitunlabs.zlcore.models.InformationModel;
+import com.zaitunlabs.zlcore.models.StoreDataModel;
+import com.zaitunlabs.zlcore.models.StoreModel;
+import com.zaitunlabs.zlcore.models.StorePagingModel;
 
 public class ZaitunApp extends BaseApplication {
 	@Override
 	public void onCreate() {
+		addDBModelClass(InformationModel.class);
+
+		addDBModelClass(AppListModel.class);
+		addDBModelClass(AppListDataModel.class);
+		addDBModelClass(AppListPagingModel.class);
+		addDBModelClass(StoreModel.class);
+		addDBModelClass(StoreDataModel.class);
+		addDBModelClass(StorePagingModel.class);
+
+		APIConstant.setApiAppid("5");
+		APIConstant.setApiKey("dhrerwer12414543kfkllm");
+		APIConstant.setApiVersion("v1");
 		super.onCreate();
 
-		DzikirHarianUtils.setReleaseMode();
-		// inisialisasi untuk remote image loading
-		//DisplayImageOptions displayimageOptions = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).build();
-		//ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).defaultDisplayImageOptions(displayimageOptions).build();
 
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
 		ImageLoader.getInstance().init(config);
 	}
 

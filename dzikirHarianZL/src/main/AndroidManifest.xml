@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.zaitunlabs.dzikirharian"
-    android:versionCode="3"
-    android:versionName="1.2" >
+    package="com.zaitunlabs.dzikirharian">
     <uses-sdk tools:overrideLibrary="com.zaitunlabs.zlcore,ernestoyaquello.com.verticalstepperform"/>
     <supports-screens
         android:anyDensity="true"
@@ -45,7 +43,7 @@
     <application
         android:name="com.zaitunlabs.zaituncore.ZaitunApp"
         android:icon="@drawable/icon_apps"
-        android:theme="@style/AppTheme.NoActionBar"
+        android:theme="@style/AppTheme"
         android:label="@string/app_name" >
 
         <meta-data
@@ -53,13 +51,16 @@
             android:value="@integer/google_play_services_version" />
          
         <activity
-            android:name=".activity.InitApp"
+            android:name=".activity.InitAppNew"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
         
@@ -72,7 +73,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.DzikirBoard"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:screenOrientation="portrait"/>
         <activity android:name=".activity.FaedahDanReferensi"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.Faedah"
@@ -107,13 +108,6 @@
             android:name=".services.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
-
-        <service
-            android:name=".services.MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
 
