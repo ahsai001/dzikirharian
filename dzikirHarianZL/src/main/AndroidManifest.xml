@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zaitunlabs.dzikirharian">
+
     <uses-sdk tools:overrideLibrary="com.zaitunlabs.zlcore,ernestoyaquello.com.verticalstepperform"/>
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -86,7 +88,10 @@
             android:screenOrientation="portrait"/>
 
 
-        <service android:name=".services.DzikirReminderService"/>
+        <service android:name=".services.DzikirReminderService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false"/>
+
         <receiver android:name=".receivers.ManageDzikirReminderReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
@@ -95,21 +100,18 @@
         <receiver android:name=".receivers.DzikirReminderReceiver"/>
 
 
-        <receiver
-            android:name="com.zaitunlabs.zaitunutils.ConnectionChangeReceiver"
-            android:label="NetworkConnection" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
-
         <service
             android:name=".services.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
+        <provider
+            android:authorities="com.zaitunlabs.dzikirharian"
+            android:name="com.activeandroid.content.ContentProvider"
+            android:enabled="true"
+            android:exported="false"/>
 
     </application>
 

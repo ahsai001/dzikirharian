@@ -6,6 +6,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
 import androidx.legacy.content.WakefulBroadcastReceiver;
 
 import com.zaitunlabs.dzikirharian.receivers.DzikirReminderReceiver;
@@ -26,16 +29,14 @@ import id.web.michsan.praytimes.Util;
 /**
  * Created by ahmad s on 3/14/2016.
  */
-public class DzikirReminderService extends IntentService {
-    public DzikirReminderService(String name) {
-        super(name);
-    }
+public class DzikirReminderService extends JobIntentService {
 
-    public DzikirReminderService(){
-        super(DzikirReminderService.class.getSimpleName());
-    }
 
     @Override
+    protected void onHandleWork(@NonNull Intent intent) {
+        onHandleIntent(intent);
+    }
+
     protected void onHandleIntent(final Intent intent) {
         //set ashr/dzikir sore reminder and subuh/dzikir pagi reminder
         //getcurrent location
@@ -151,10 +152,7 @@ public class DzikirReminderService extends IntentService {
                     Prefs.with(DzikirReminderService.this).save(DZIKIR_PREFS_LAST_UPDATE, updateCal.getTimeInMillis());
 
 
-
-
-
-                    WakefulBroadcastReceiver.completeWakefulIntent(intent);
+                    //WakefulBroadcastReceiver.completeWakefulIntent(intent);
                 }
 
                 
@@ -168,13 +166,13 @@ public class DzikirReminderService extends IntentService {
 
                     setManageReminderAlarm(calendar.getTimeInMillis(), ManageDzikirReminderReceiver.class);
 
-                    WakefulBroadcastReceiver.completeWakefulIntent(intent);
+                    //WakefulBroadcastReceiver.completeWakefulIntent(intent);
                 }
             });
             helper.init();
             helper.start();
         }else{
-            WakefulBroadcastReceiver.completeWakefulIntent(intent);
+            //WakefulBroadcastReceiver.completeWakefulIntent(intent);
         }
     }
 

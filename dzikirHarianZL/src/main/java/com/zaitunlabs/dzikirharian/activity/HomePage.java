@@ -9,11 +9,13 @@ import android.view.View;
 import android.widget.ImageView.ScaleType;
 
 import com.zaitunlabs.dzikirharian.R;
+import com.zaitunlabs.dzikirharian.constants.Constanta;
 import com.zaitunlabs.dzikirharian.receivers.ManageDzikirReminderReceiver;
 import com.zaitunlabs.zlcore.activities.AppListActivity;
 import com.zaitunlabs.zlcore.activities.MessageListActivity;
 import com.zaitunlabs.zlcore.activities.StoreActivity;
 import com.zaitunlabs.zlcore.api.APIConstant;
+import com.zaitunlabs.zlcore.constants.ZLCoreConstanta;
 import com.zaitunlabs.zlcore.modules.about.AboutUs;
 import com.zaitunlabs.zlcore.modules.shaum_sholat.CountDownSholatReminderUtils;
 import com.zaitunlabs.zlcore.core.CanvasActivity;
@@ -221,11 +223,8 @@ public class HomePage extends CanvasActivity {
 		setContentView(canvas.getFillParentView());
 
 
-		Intent setReminderIntent = new Intent(this, ManageDzikirReminderReceiver.class);
-		sendBroadcast(setReminderIntent);
-
-		Intent setShaumSholatReminderIntent = new Intent(this, ManageShaumSholatReminderReceiver.class);
-		sendBroadcast(setShaumSholatReminderIntent);
+		ManageDzikirReminderReceiver.start(this);
+		ManageShaumSholatReminderReceiver.start(this);
 
 		countDownSholatReminderUtils = new CountDownSholatReminderUtils();
 	}
