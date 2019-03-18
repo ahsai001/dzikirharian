@@ -1,5 +1,8 @@
 [
     {
+        "item": "version 1.18.24.40",
+        "description": "- bug fixing : masalah pada android oreo ke atas\n- perbaikan kecil lainnya"
+    },{
         "item": "version 1.18.23.38",
         "description": "- perbaikan ui movable menu, history\n- penambahan halaman informasi, toko dan rekomendasi\n- perbaikan kecil lainnya"
     },{

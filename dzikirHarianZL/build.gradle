@@ -100,7 +100,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-places:16.0.0'
 
 
-    implementation 'com.github.ahsai001:zlcore:1.1.27.40'
+    implementation 'com.github.ahsai001:zlcore:1.1.28.41'
     //implementation project(':zlcore')
 
 }
