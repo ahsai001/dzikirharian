@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
 import androidx.legacy.content.WakefulBroadcastReceiver;
 
+import com.zaitunlabs.dzikirharian.constants.Constanta;
 import com.zaitunlabs.dzikirharian.receivers.DzikirReminderReceiver;
 import com.zaitunlabs.dzikirharian.receivers.ManageDzikirReminderReceiver;
 import com.zaitunlabs.zlcore.utils.IntegerIDUtils;
@@ -180,7 +181,7 @@ public class DzikirReminderService extends JobIntentService {
         AlarmManager alarmMgr = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
 
         Intent reminderIntent = new Intent(this, receiver);
-        reminderIntent.setAction("com.zaitunlabs.dzikirharian.manage_reminder_alarm"+IntegerIDUtils.getID(this));
+        reminderIntent.setAction(Constanta.ACTION_MANAGE_DZIKIR_REMINDER+IntegerIDUtils.getID(this));
         PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 212, reminderIntent, 0);
 
         alarmMgr.set(AlarmManager.RTC_WAKEUP, time, alarmIntent);

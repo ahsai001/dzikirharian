@@ -87,6 +87,7 @@ dependencies {
     //implementation files('libs/universal-image-loader-1.9.2.jar')
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     implementation 'com.google.android.material:material:1.1.0-alpha04'
+
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:17.4.0'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
@@ -102,7 +103,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-places:16.0.0'
 
 
-    implementation 'com.github.ahsai001:zlcore:1.1.29.42'
+    implementation 'com.github.ahsai001:zlcore:1.1.30.46'
     //implementation project(':zlcore')
 
 }

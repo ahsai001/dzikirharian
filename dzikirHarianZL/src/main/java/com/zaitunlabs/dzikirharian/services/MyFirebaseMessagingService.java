@@ -1,22 +1,14 @@
 package com.zaitunlabs.dzikirharian.services;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Looper;
-import android.util.Log;
-import android.view.WindowManager;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.dzikirharian.activity.HomePage;
-import com.zaitunlabs.zlcore.utils.CommonUtils;
 import com.zaitunlabs.zlcore.utils.NotificationUtils;
 import com.zaitunlabs.zlcore.utils.PrefsData;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Handler;
 
 /**
  * Created by ahsai on 8/22/2017.

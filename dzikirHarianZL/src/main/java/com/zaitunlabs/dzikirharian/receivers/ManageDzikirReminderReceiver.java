@@ -18,7 +18,7 @@ public class ManageDzikirReminderReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if(intent.getAction() != null && (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED) ||
-                intent.getAction().equals(Constanta.ACTION_MANAGE_DZIKIR_REMINDER))) {
+                intent.getAction().startsWith(Constanta.ACTION_MANAGE_DZIKIR_REMINDER))) {
             JobIntentService.enqueueWork(context, DzikirReminderService.class, 1000, new Intent());
         }
     }
