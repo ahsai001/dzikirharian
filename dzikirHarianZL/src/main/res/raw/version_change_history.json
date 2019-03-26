@@ -1,5 +1,8 @@
 [
     {
+        "item": "version 1.18.26.46",
+        "description": "- bug fixing : masalah pada alarm\n- perbaikan kecil lainnya"
+    },{
         "item": "version 1.18.25.44",
         "description": "- bug fixing : masalah pada saat buka aplikasi\n- perbaikan kecil lainnya"
     },{
