@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zaitunlabs.dzikirharian">
 
-    <uses-sdk tools:overrideLibrary="com.zaitunlabs.zlcore,ernestoyaquello.com.verticalstepperform"/>
+    <uses-sdk tools:overrideLibrary="ernestoyaquello.com.verticalstepperform,com.zaitunlabs.zlcore,com.google.firebase.messaging,com.google.firebase.iid"/>
 
     <supports-screens
         android:anyDensity="true"

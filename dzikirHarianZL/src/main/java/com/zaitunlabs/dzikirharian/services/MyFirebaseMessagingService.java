@@ -8,7 +8,10 @@ import com.zaitunlabs.dzikirharian.activity.HomePage;
 import com.zaitunlabs.zlcore.utils.NotificationUtils;
 import com.zaitunlabs.zlcore.utils.PrefsData;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by ahsai on 8/22/2017.
@@ -34,7 +37,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notifBody = remoteMessage.getNotification().getBody();
         }
 
-        Map<String, String> data = remoteMessage.getData();
+        Map<String, String> remoteData = remoteMessage.getData();
+        Map<String, Object> data = new HashMap<>();
+        Set<Map.Entry<String, String>> entrySet = remoteData.entrySet();
+
+        for (Map.Entry<String, String> item : entrySet) {
+            data.put(item.getKey(), item.getValue());
+        }
+
 
         NotificationUtils.onMessageReceived(getBaseContext(),data, notifTitle, notifBody
                 ,HomePage.class, null, null, R.string.app_name,R.drawable.icon_apps,

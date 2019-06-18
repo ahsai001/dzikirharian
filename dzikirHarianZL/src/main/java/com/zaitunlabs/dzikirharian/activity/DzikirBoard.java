@@ -74,7 +74,6 @@ public class DzikirBoard extends CanvasActivity {
 	ASImageView iv3;
 	ASImageView iv4;
 	ASShiftableImageView countImageView;
-	//ASImageView countImageView;
 	
 	TextView pageView;
 	ASTextView translatePart;
@@ -206,6 +205,7 @@ public class DzikirBoard extends CanvasActivity {
 		keepScreenOnSwitch.setShowText(false);
 		keepScreenOnSwitch.setText("standby");
 		keepScreenOnSwitch.setTextColor(Color.WHITE);
+		keepScreenOnSwitch.setHighlightColor(Color.GREEN);
 		keepScreenOnSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -376,7 +376,7 @@ public class DzikirBoard extends CanvasActivity {
 					iv4.setVisibility(View.GONE);
 				}
 
-				Picasso.get().load("drawable://" + counterList.get(index)).into(countImageView.getImageView());
+				Picasso.get().load(counterList.get(index)).into(countImageView.getImageView());
 
 				tv.setText(terjemahList.get(index));
 				
