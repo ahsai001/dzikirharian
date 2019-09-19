@@ -1,5 +1,8 @@
 [
     {
+        "item": "version RC",
+        "description": "- tambah fitur 'tandai sudah dibaca' : "
+    },{
         "item": "version 1.18.27.48",
         "description": "- bug fixing : perubahan nama aplikasi untuk gawai dengan bahasa indonesia"
     },{

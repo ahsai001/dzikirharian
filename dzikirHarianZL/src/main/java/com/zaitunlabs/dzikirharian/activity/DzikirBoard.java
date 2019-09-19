@@ -1,21 +1,28 @@
 package com.zaitunlabs.dzikirharian.activity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.widget.SwitchCompat;
+
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -35,7 +42,9 @@ import com.zaitunlabs.dzikirharian.adapter.PageListAdapter;
 import com.zaitunlabs.dzikirharian.model.DzikirModel;
 import com.zaitunlabs.zlcore.modules.shaum_sholat.CountDownSholatReminderUtils;
 import com.zaitunlabs.zlcore.core.CanvasActivity;
+import com.zaitunlabs.zlcore.utils.DateStringUtils;
 import com.zaitunlabs.zlcore.utils.FileUtils;
+import com.zaitunlabs.zlcore.utils.ViewUtils;
 import com.zaitunlabs.zlcore.utils.audio.AudioService;
 import com.zaitunlabs.zlcore.utils.audio.AudioServiceCallBack;
 import com.zaitunlabs.zlcore.utils.audio.BackSoundService;
@@ -104,6 +113,12 @@ public class DzikirBoard extends CanvasActivity {
 	SwitchCompat keepScreenOnSwitch;
 
 	CountDownSholatReminderUtils countDownSholatReminderUtils;
+
+	DelayedAction delayedAction;
+
+	String subHeaderTitle;
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		//DebugUtils.logW("SIZE", "screen 1: "+CommonUtils.getScreenWidth(this)+"x"+CommonUtils.getScreenHeight(this));
@@ -114,7 +129,7 @@ public class DzikirBoard extends CanvasActivity {
 
 		canvas.setBackgroundResource(R.drawable.bgkayu);
 
-		String subHeaderTitle = CommonUtils.getStringIntent(getIntent(), "subTitle", "Dzikir Harian");
+		subHeaderTitle = CommonUtils.getStringIntent(getIntent(), "subTitle", "Dzikir Harian");
 
 		// header
 		// create header
@@ -321,6 +336,15 @@ public class DzikirBoard extends CanvasActivity {
 			}
 		});
 		navView.addViewWithFrame(pageView, 30, 10, 40, 100);
+
+
+		delayedAction = new DelayedAction(20 * 60 * 1000, new Runnable() {
+			@Override
+			public void run() {
+				Prefs.with(DzikirBoard.this).save("last-read:"+subHeaderTitle+":"+bacaanList.get(navHandler.getIndex()), new Date().getTime());
+				reloadCounterImage();
+			}
+		});
 		
 		
 		navHandler.setOutputListener(new NavigationStateListener() {
@@ -383,6 +407,9 @@ public class DzikirBoard extends CanvasActivity {
 				dalilFullText.setText(dalilList.get(index));
 
 				dzikirView.setVScrollOnTop();
+
+				reloadCounterImage();
+				delayedAction.go();
 				return false;
 			}
 		});
@@ -764,14 +791,51 @@ public class DzikirBoard extends CanvasActivity {
 		EventBus.getDefault().register(this);
 
 		countDownSholatReminderUtils = new CountDownSholatReminderUtils();
+
+
 	}
-	
+
+	private void reloadCounterImage() {
+		long lastRead = Prefs.with(DzikirBoard.this).getLong("last-read:"+subHeaderTitle+":"+bacaanList.get(navHandler.getIndex()), 0);
+		Date lastReadDate = new Date();
+		lastReadDate.setTime(lastRead);
+		if(DateStringUtils.compareToDay(lastReadDate,new Date(), Locale.getDefault())==0){
+			Resources r = getResources();
+			Drawable[] layers = new Drawable[2];
+			layers[0] = r.getDrawable(counterList.get(navHandler.getIndex()));
+			layers[1] = r.getDrawable(R.drawable.icon_rate_this_app);
+			LayerDrawable layerDrawable = new LayerDrawable(layers);
+			countImageView.getImageView().setImageDrawable(layerDrawable);
+		}
+	}
+
 	@Override
 	public void onCreateMovableMenu(ASMovableMenu menu) {
 		super.onCreateMovableMenu(menu);
+
+		Button doneButton = new Button(this);
+		doneButton.setText("Tandai sudah dibaca");
+		menu.addItemMenu(doneButton, new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				delayedAction.goNow();
+				CommonUtils.showToast(DzikirBoard.this, "Bacaan sudah berhasil ditandai");
+			}
+		}, null);
+
+		Button doneNextButton = new Button(this);
+		doneNextButton.setText("Tandai sudah dibaca & lanjut berikutnya");
+		menu.addItemMenu(doneNextButton, new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				delayedAction.goNow();
+				navHandler.next();
+				CommonUtils.showToast(DzikirBoard.this, "Bacaan sudah berhasil ditandai");
+			}
+		}, null);
 		
 		Button pageSelection = new Button(this);
-		pageSelection.setText("pilih halaman ...");
+		pageSelection.setText("Pilih halaman");
 		menu.addItemMenu(pageSelection, new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -863,11 +927,13 @@ public class DzikirBoard extends CanvasActivity {
 		}
 
 		countDownSholatReminderUtils.startCountDown(this,countDownTimerHeaderText);
+		delayedAction.go();
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
+		delayedAction.pause();
 		countDownSholatReminderUtils.stopCountDown();
 	}
 
@@ -875,6 +941,39 @@ public class DzikirBoard extends CanvasActivity {
 	public void onEvent(AudioServiceCallBack event){
 		if(event.getState() == AudioService.ACTION_NONE || event.getState() == AudioService.ACTION_PAUSE || event.getState() == AudioService.ACTION_STOP){
 			soundView.setImageResource(R.drawable.play);
+		}
+	}
+
+
+	class DelayedAction{
+		private int delayedInMS=0;
+		private Handler handler = new Handler();
+		private Runnable action;
+
+		public DelayedAction(int delayedInMS, Runnable action){
+			this.delayedInMS = delayedInMS;
+			this.action = action;
+		}
+
+		public void go(){
+			if(action != null) {
+				handler.removeCallbacks(action);
+				handler.postDelayed(action, delayedInMS);
+			}
+		}
+
+
+		public void pause(){
+			if(action != null) {
+				handler.removeCallbacks(action);
+			}
+		}
+
+		public void goNow(){
+			if(action != null) {
+				handler.removeCallbacks(action);
+				action.run();
+			}
 		}
 	}
 }
