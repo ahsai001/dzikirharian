@@ -107,11 +107,6 @@
             </intent-filter>
         </service>
 
-        <provider
-            android:authorities="com.zaitunlabs.dzikirharian"
-            android:name="com.activeandroid.content.ContentProvider"
-            android:enabled="true"
-            android:exported="false"/>
 
     </application>
 

@@ -5,7 +5,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.dzikirharian.activity.HomePage;
-import com.zaitunlabs.zlcore.utils.NotificationUtils;
+import com.zaitunlabs.zlcore.utils.NotificationUtil;
 import com.zaitunlabs.zlcore.utils.PrefsData;
 
 import java.util.HashMap;
@@ -46,8 +46,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
 
-        NotificationUtils.onMessageReceived(getBaseContext(),data, notifTitle, notifBody
+        NotificationUtil.onMessageReceived(getBaseContext(),data, notifTitle, notifBody
                 ,HomePage.class, null, null, R.string.app_name,R.drawable.icon_apps,
-                null);
+                null,false);
     }
 }

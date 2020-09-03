@@ -42,14 +42,15 @@ import com.zaitunlabs.dzikirharian.adapter.PageListAdapter;
 import com.zaitunlabs.dzikirharian.model.DzikirModel;
 import com.zaitunlabs.zlcore.modules.shaum_sholat.CountDownSholatReminderUtils;
 import com.zaitunlabs.zlcore.core.CanvasActivity;
-import com.zaitunlabs.zlcore.utils.DateStringUtils;
-import com.zaitunlabs.zlcore.utils.FileUtils;
-import com.zaitunlabs.zlcore.utils.ViewUtils;
+import com.zaitunlabs.zlcore.utils.DateStringUtil;
+import com.zaitunlabs.zlcore.utils.FileUtil;
+import com.zaitunlabs.zlcore.utils.NavigationHandler;
+import com.zaitunlabs.zlcore.utils.ViewUtil;
 import com.zaitunlabs.zlcore.utils.audio.AudioService;
 import com.zaitunlabs.zlcore.utils.audio.AudioServiceCallBack;
 import com.zaitunlabs.zlcore.utils.audio.BackSoundService;
-import com.zaitunlabs.zlcore.utils.CommonUtils;
-import com.zaitunlabs.zlcore.utils.DebugUtils;
+import com.zaitunlabs.zlcore.utils.CommonUtil;
+import com.zaitunlabs.zlcore.utils.DebugUtil;
 import com.zaitunlabs.zlcore.utils.Prefs;
 import com.zaitunlabs.zlcore.views.ASGestureDetector;
 import com.zaitunlabs.zlcore.views.ASImageButtonView;
@@ -65,8 +66,6 @@ import com.zaitunlabs.zlcore.views.CanvasLayout;
 import com.zaitunlabs.zlcore.views.CanvasSection;
 import com.zaitunlabs.zlcore.views.DimensionStateListener;
 import com.zaitunlabs.zlcore.views.GoToTopView;
-import com.zaitunlabs.zlcore.views.NavigationHandler;
-import com.zaitunlabs.zlcore.views.NavigationStateListener;
 
 
 public class DzikirBoard extends CanvasActivity {
@@ -121,15 +120,15 @@ public class DzikirBoard extends CanvasActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		//DebugUtils.logW("SIZE", "screen 1: "+CommonUtils.getScreenWidth(this)+"x"+CommonUtils.getScreenHeight(this));
+		//DebugUtil.logW("SIZE", "screen 1: "+CommonUtil.getScreenWidth(this)+"x"+CommonUtil.getScreenHeight(this));
 		super.onCreate(savedInstanceState);
 
-		//DebugUtils.logW("SIZE", "screen 2: "+CommonUtils.getScreenWidth(this)+"x"+CommonUtils.getScreenHeight(this));
+		//DebugUtil.logW("SIZE", "screen 2: "+CommonUtil.getScreenWidth(this)+"x"+CommonUtil.getScreenHeight(this));
 		final CanvasLayout canvas = new CanvasLayout(this);
 
 		canvas.setBackgroundResource(R.drawable.bgkayu);
 
-		subHeaderTitle = CommonUtils.getStringIntent(getIntent(), "subTitle", "Dzikir Harian");
+		subHeaderTitle = CommonUtil.getStringIntent(getIntent(), "subTitle", "Dzikir Harian");
 
 		// header
 		// create header
@@ -275,7 +274,7 @@ public class DzikirBoard extends CanvasActivity {
 					//close
 					navHandler.showNavigationViewWithState();
 					pageContent.removeAllViews();
-					pageView.setText("Halaman " + (navHandler.getIndex() + 1) + " dari " + navHandler.getCounts());
+					pageView.setText("Halaman " + (navHandler.getIndex() + 1) + " dari " + navHandler.getCount());
 				}else if(currentIndexState == 1){
 					//open
 					navHandler.hideNavigationView();
@@ -347,41 +346,40 @@ public class DzikirBoard extends CanvasActivity {
 		});
 		
 		
-		navHandler.setOutputListener(new NavigationStateListener() {
+		navHandler.setStateListener(new NavigationHandler.NavigationStateListener() {
 			@Override
-			public boolean navigationStateIndex(View outputView, View navView,
-					int index, int counts) {
+			public boolean navigationStateIndex(View outputView, int index, int counts) {
 				if (soundView != null)
 					soundView.setImageResource(R.drawable.play);
 				if(runText != null){
 					runText.setText(runningTextList.get(index));
 					runText.startScroll();
 				}
-					
+
 				AudioService.stopAudioSound(DzikirBoard.this);
 				if(BackSoundService.getLastAction() == BackSoundService.ACTION_PAUSE){
 					BackSoundService.resumeBackSound(DzikirBoard.this);
 				}
-				
+
 				soundLink = soundList.get(index);
-				
+
 				slidingLayer.closeLayer(true);
 
 				pageView.setText("Halaman " + (index + 1) + " dari " + counts);
-				
+
 				// set new bacaan
 				String bacaanString = bacaanList.get(index);
 				String[] bacaanArray = bacaanString.split(",");
 				if(bacaanArray.length == 4){ //handle dzikir sesudah sholat alhamdu, subhanallah, allahuakbar, laa ilaha
-					//Picasso.get().load(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[0])).into(iv);
-					//Picasso.get().load(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[1])).into(iv2);
-					//Picasso.get().load(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[2])).into(iv3);
-					//Picasso.get().load(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[3])).into(iv4);
+					//Picasso.get().load(CommonUtil.getIDResource(DzikirBoard.this, "drawable", bacaanArray[0])).into(iv);
+					//Picasso.get().load(CommonUtil.getIDResource(DzikirBoard.this, "drawable", bacaanArray[1])).into(iv2);
+					//Picasso.get().load(CommonUtil.getIDResource(DzikirBoard.this, "drawable", bacaanArray[2])).into(iv3);
+					//Picasso.get().load(CommonUtil.getIDResource(DzikirBoard.this, "drawable", bacaanArray[3])).into(iv4);
 
-					iv.setImageResource(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[0]));
-					iv2.setImageResource(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[1]));
-					iv3.setImageResource(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[2]));
-					iv4.setImageResource(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanArray[3]));
+					iv.setImageResource(CommonUtil.getIDResource(DzikirBoard.this, "drawable", bacaanArray[0]));
+					iv2.setImageResource(CommonUtil.getIDResource(DzikirBoard.this, "drawable", bacaanArray[1]));
+					iv3.setImageResource(CommonUtil.getIDResource(DzikirBoard.this, "drawable", bacaanArray[2]));
+					iv4.setImageResource(CommonUtil.getIDResource(DzikirBoard.this, "drawable", bacaanArray[3]));
 
 
 					iv2.setVisibility(View.VISIBLE);
@@ -389,8 +387,8 @@ public class DzikirBoard extends CanvasActivity {
 					iv4.setVisibility(View.VISIBLE);
 
 				}else {
-					//Picasso.get().load(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanString)).into(iv);
-					iv.setImageResource(CommonUtils.getIDResource(DzikirBoard.this, "drawable", bacaanString));
+					//Picasso.get().load(CommonUtil.getIDResource(DzikirBoard.this, "drawable", bacaanString)).into(iv);
+					iv.setImageResource(CommonUtil.getIDResource(DzikirBoard.this, "drawable", bacaanString));
 
 					iv2.setImageDrawable(null);
 					iv3.setImageDrawable(null);
@@ -403,7 +401,7 @@ public class DzikirBoard extends CanvasActivity {
 				Picasso.get().load(counterList.get(index)).into(countImageView.getImageView());
 
 				tv.setText(terjemahList.get(index));
-				
+
 				dalilFullText.setText(dalilList.get(index));
 
 				dzikirView.setVScrollOnTop();
@@ -501,7 +499,7 @@ public class DzikirBoard extends CanvasActivity {
 			@Override
 			public boolean doubleTapEventOccured() {
 				//goto reading mode
-				DebugUtils.logE("GESTURE DETECTOR", "double tap");
+				DebugUtil.logE("GESTURE DETECTOR", "double tap");
 				if(!isReadingMode){
 					//goto reading mode
 					isReadingMode = !isReadingMode;
@@ -549,7 +547,7 @@ public class DzikirBoard extends CanvasActivity {
 			@Override
 			public boolean cancelEventOccured(float x, float y) {
 				// TODO Auto-generated method stub
-				DebugUtils.logD("","cancel event");
+				DebugUtil.logD("","cancel event");
 				return false;
 			}
 		};
@@ -622,23 +620,23 @@ public class DzikirBoard extends CanvasActivity {
 
 		List<DzikirModel> data = null;
 		int rawJSONFile = 0;
-		if (CommonUtils.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("pagi")) {
+		if (CommonUtil.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("pagi")) {
 			rawJSONFile = R.raw.dzikirpagi;
 			previousSavedPage = Prefs.with(this).getInt("savedPagiPage", 0);
 			savedPageKey = "savedPagiPage";
-		} else if (CommonUtils.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("petang")) {
+		} else if (CommonUtil.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("petang")) {
 			rawJSONFile = R.raw.dzikirpetang;
 			previousSavedPage = Prefs.with(this).getInt("savedPetangPage", 0);
 			savedPageKey = "savedPetangPage";
-		} else if (CommonUtils.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("subuh")) {
+		} else if (CommonUtil.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("subuh")) {
 			rawJSONFile = R.raw.dzikirsesudahsholat_subuh;
 			previousSavedPage = Prefs.with(this).getInt("savedSholatSubuhPage", 0);
 			savedPageKey = "savedSholatSubuhPage";
-		} else if (CommonUtils.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("dz-a-i")) {
+		} else if (CommonUtil.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("dz-a-i")) {
 			rawJSONFile = R.raw.dzikirsesudahsholat_dz_a_i;
 			previousSavedPage = Prefs.with(this).getInt("savedSholatDzAIPage", 0);
 			savedPageKey = "savedSholatDzAIPage";
-		} else if (CommonUtils.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("maghrib")) {
+		} else if (CommonUtil.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("maghrib")) {
 			rawJSONFile = R.raw.dzikirsesudahsholat_maghrib;
 			previousSavedPage = Prefs.with(this).getInt("savedSholatMaghribPage", 0);
 			savedPageKey = "savedSholatMaghribPage";
@@ -646,14 +644,14 @@ public class DzikirBoard extends CanvasActivity {
 
 		// set data
 
-		data = new Gson().fromJson(FileUtils.getReaderFromRawFile(this, rawJSONFile), new TypeToken<List<DzikirModel>>(){}.getType());
+		data = new Gson().fromJson(FileUtil.getReaderFromRawFile(this, rawJSONFile), new TypeToken<List<DzikirModel>>(){}.getType());
 
 
 		Iterator<DzikirModel> iterator = data.iterator();
 	    while(iterator.hasNext()){
 	    	DzikirModel item = iterator.next();
 	    	bacaanList.add(item.getBacaan());
-	    	counterList.add(CommonUtils.getIDResource(this, "drawable", item.getCounter()));
+	    	counterList.add(CommonUtil.getIDResource(this, "drawable", item.getCounter()));
 	    	terjemahList.add(item.getTerjemah());
 	    	dalilList.add(item.getDalil());
 	    	soundList.add(item.getSound());
@@ -737,7 +735,7 @@ public class DzikirBoard extends CanvasActivity {
 		slidingLayer.setSlidingListener(new ASSlidingLayer.ASSlidingLayerListener() {
 			@Override
 			public void slidingState(int state) {
-				DebugUtils.logE("ahmad", "state : "+state);
+				DebugUtil.logE("ahmad", "state : "+state);
 			}
 		});
 
@@ -755,7 +753,7 @@ public class DzikirBoard extends CanvasActivity {
 	
 		// initiate state
 		navHandler.setNextPrevView(prevView, nextView);
-		navHandler.setCounts(bacaanList.size());
+		navHandler.setCount(bacaanList.size());
 		navHandler.setIndex(previousSavedPage);
 
 		setContentView(canvas.getFillParentView());
@@ -787,7 +785,7 @@ public class DzikirBoard extends CanvasActivity {
 		//getMovableMenu().setAppearDisappearPoint(poin);
 		
 
-		//DebugUtils.logW("SIZE", "app size : "+CommonUtils.getScreenWidth(this)+"x"+CommonUtils.getAppHeight(this));
+		//DebugUtil.logW("SIZE", "app size : "+CommonUtil.getScreenWidth(this)+"x"+CommonUtil.getAppHeight(this));
 		EventBus.getDefault().register(this);
 
 		countDownSholatReminderUtils = new CountDownSholatReminderUtils();
@@ -799,7 +797,7 @@ public class DzikirBoard extends CanvasActivity {
 		long lastRead = Prefs.with(DzikirBoard.this).getLong("last-read:"+subHeaderTitle+":"+bacaanList.get(navHandler.getIndex()), 0);
 		Date lastReadDate = new Date();
 		lastReadDate.setTime(lastRead);
-		if(DateStringUtils.compareToDay(lastReadDate,new Date(), Locale.getDefault())==0){
+		if(DateStringUtil.compareToDay(lastReadDate,new Date(), Locale.getDefault())==0){
 			Resources r = getResources();
 			Drawable[] layers = new Drawable[2];
 			layers[0] = r.getDrawable(counterList.get(navHandler.getIndex()));
@@ -819,7 +817,7 @@ public class DzikirBoard extends CanvasActivity {
 			@Override
 			public void onClick(View v) {
 				delayedAction.goNow();
-				CommonUtils.showToast(DzikirBoard.this, "Bacaan sudah berhasil ditandai");
+				CommonUtil.showToast(DzikirBoard.this, "Bacaan sudah berhasil ditandai");
 			}
 		}, null);
 
@@ -830,7 +828,7 @@ public class DzikirBoard extends CanvasActivity {
 			public void onClick(View v) {
 				delayedAction.goNow();
 				navHandler.next();
-				CommonUtils.showToast(DzikirBoard.this, "Bacaan sudah berhasil ditandai");
+				CommonUtil.showToast(DzikirBoard.this, "Bacaan sudah berhasil ditandai");
 			}
 		}, null);
 		
@@ -883,7 +881,7 @@ public class DzikirBoard extends CanvasActivity {
 	protected void onStart() {
 		super.onStart();
 		if(previousSavedPage > 0) {
-			CommonUtils.showDialog2Option(this, "Perhatian", "Apakah anda ingin melanjutkan sesi sebelumnya?",
+			CommonUtil.showDialog2Option(this, "Perhatian", "Apakah anda ingin melanjutkan sesi sebelumnya?",
 					"Ya", new Runnable() {
 						@Override
 						public void run() {

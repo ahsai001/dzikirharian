@@ -157,7 +157,7 @@ public class HomePage extends CanvasActivity {
 		infoPage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				MessageListActivity.start(HomePage.this);
+				MessageListActivity.start(HomePage.this, false);
 			}
 		});
 
@@ -175,7 +175,7 @@ public class HomePage extends CanvasActivity {
 		storePage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				StoreActivity.start(HomePage.this);
+				StoreActivity.start(HomePage.this, false);
 			}
 		});
 
@@ -192,7 +192,7 @@ public class HomePage extends CanvasActivity {
 		recAppPage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				AppListActivity.start(HomePage.this);
+				AppListActivity.start(HomePage.this, false);
 			}
 		});
 
@@ -213,7 +213,7 @@ public class HomePage extends CanvasActivity {
 						0, R.string.share_title, R.string.share_body_template,
 						0, R.string.feedback_mail_to, R.string.feedback_title, R.string.feedback_body_template,
 						0,
-						R.raw.version_change_history, false,"https://zaitunlabs.com/dzikir-harian/");
+						R.raw.version_change_history, false,"https://zaitunlabs.com/dzikir-harian/",false);
 			}
 		});
 
@@ -235,7 +235,7 @@ public class HomePage extends CanvasActivity {
 		super.onResume();
 		countDownSholatReminderUtils.startCountDown(this,countDownTimerHeaderText);
 
-		FCMIntentService.startSending(this,APIConstant.API_APPID,false);
+		FCMIntentService.startSending(this,APIConstant.API_APPID,false, false);
 	}
 
 	@Override

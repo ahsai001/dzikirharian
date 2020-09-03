@@ -14,8 +14,8 @@ import androidx.legacy.content.WakefulBroadcastReceiver;
 import com.zaitunlabs.dzikirharian.constants.Constanta;
 import com.zaitunlabs.dzikirharian.receivers.DzikirReminderReceiver;
 import com.zaitunlabs.dzikirharian.receivers.ManageDzikirReminderReceiver;
-import com.zaitunlabs.zlcore.utils.IntegerIDUtils;
-import com.zaitunlabs.zlcore.utils.LocationUtils;
+import com.zaitunlabs.zlcore.utils.IntegerIDUtil;
+import com.zaitunlabs.zlcore.utils.LocationUtil;
 import com.zaitunlabs.zlcore.utils.Prefs;
 
 import java.util.Calendar;
@@ -50,7 +50,7 @@ public class DzikirReminderService extends JobIntentService {
         isNeedRunning = false;
         if(dateInMillis > 0){
             Date lastupdate = new Date(dateInMillis);
-            if(CommonUtils.compareToDay(Calendar.getInstance().getTime(),lastupdate)==0){
+            if(CommonUtil.compareToDay(Calendar.getInstance().getTime(),lastupdate)==0){
                 isNeedRunning = false;
             }else{
                 isNeedRunning = true;
@@ -61,8 +61,8 @@ public class DzikirReminderService extends JobIntentService {
         */
 
         if(isNeedRunning) {
-            final LocationUtils helper = new LocationUtils(this);
-            helper.setUpdateLocationCallback(new LocationUtils.LocationHelperCallback() {
+            final LocationUtil helper = new LocationUtil(this);
+            helper.setUpdateLocationCallback(new LocationUtil.LocationHelperCallback() {
                 @Override
                 public void currentLocationUpdate(Location newLocation) {
                     //set new schedule
@@ -181,7 +181,7 @@ public class DzikirReminderService extends JobIntentService {
         AlarmManager alarmMgr = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
 
         Intent reminderIntent = new Intent(this, receiver);
-        reminderIntent.setAction(Constanta.ACTION_MANAGE_DZIKIR_REMINDER+IntegerIDUtils.getID(this));
+        reminderIntent.setAction(Constanta.ACTION_MANAGE_DZIKIR_REMINDER+IntegerIDUtil.getID(this));
         PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 212, reminderIntent, 0);
 
         alarmMgr.set(AlarmManager.RTC_WAKEUP, time, alarmIntent);
@@ -194,7 +194,7 @@ public class DzikirReminderService extends JobIntentService {
         Intent reminderIntent = new Intent(this, receiver);
         reminderIntent.putExtra(PARAM_SHOW_FLAG, show);
         reminderIntent.putExtra(PARAM_MESSAGE, message);
-        reminderIntent.setAction("com.zaitunlabs.dzikirharian.reminder_alarm"+IntegerIDUtils.getID(this));
+        reminderIntent.setAction("com.zaitunlabs.dzikirharian.reminder_alarm"+IntegerIDUtil.getID(this));
         PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 222, reminderIntent, 0);
 
         alarmMgr.set(AlarmManager.RTC_WAKEUP, time, alarmIntent);

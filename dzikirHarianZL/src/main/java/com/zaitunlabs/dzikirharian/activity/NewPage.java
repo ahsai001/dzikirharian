@@ -29,10 +29,10 @@ import com.google.gson.Gson;
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.zlcore.core.CanvasActivity;
 import com.zaitunlabs.zlcore.services.DataIntentService;
-import com.zaitunlabs.zlcore.utils.CommonUtils;
-import com.zaitunlabs.zlcore.utils.HttpClientUtils;
-import com.zaitunlabs.zlcore.utils.NotificationProgressUtils;
-import com.zaitunlabs.zlcore.utils.PermissionUtils;
+import com.zaitunlabs.zlcore.utils.CommonUtil;
+import com.zaitunlabs.zlcore.utils.HttpClientUtil;
+import com.zaitunlabs.zlcore.utils.NotificationProgressUtil;
+import com.zaitunlabs.zlcore.utils.PermissionUtil;
 import com.zaitunlabs.zlcore.views.CanvasLayout;
 import com.zaitunlabs.zlcore.views.CanvasSection;
 
@@ -50,7 +50,7 @@ import id.web.michsan.praytimes.Util;
 
 public class NewPage extends CanvasActivity {
 	private String selectedImage;
-	PermissionUtils permissionUtils;
+	PermissionUtil permissionUtils;
 	TextView jadwalView;
 	EditText tagEditText;
 	EditText titleEditText;
@@ -73,7 +73,7 @@ public class NewPage extends CanvasActivity {
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				permissionUtils = PermissionUtils.checkPermissionAndGo(NewPage.this, 1003,
+				permissionUtils = PermissionUtil.checkPermissionAndGo(NewPage.this, 1003,
 						new Runnable() {
 							@Override
 							public void run() {
@@ -137,7 +137,7 @@ public class NewPage extends CanvasActivity {
 					selectedImage = getRealPathFromURI(this,data.getData());
 
 					DataIntentService.HeaderParts headerParts= new DataIntentService.HeaderParts();
-					headerParts.addItem("x-device",CommonUtils.getMeid(this));
+					headerParts.addItem("x-device",CommonUtil.getMeid(this));
 
 					DataIntentService.BodyParts bodyParts = new DataIntentService.BodyParts();
 					bodyParts.addItem("title",titleEditText.getText().toString());
@@ -148,7 +148,7 @@ public class NewPage extends CanvasActivity {
 					fileParts.addItem("image", new File(selectedImage));
 
 					DataIntentService.startUpload(this, "http://gallery.ayaindonesia.com/api/saveGallery",R.drawable.icon,"Upload Image","Progress",
-							24,fileParts,headerParts,bodyParts,null,"upload");
+							24,fileParts,headerParts,bodyParts,null,false,"upload");
 
 
 				}

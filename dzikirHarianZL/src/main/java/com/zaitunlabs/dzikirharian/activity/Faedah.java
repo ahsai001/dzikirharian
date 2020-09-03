@@ -28,7 +28,7 @@ import com.zaitunlabs.zlcore.modules.about.SimpleExpandableListAdapter;
 import com.zaitunlabs.zlcore.modules.about.SimpleItemDescriptionModel;
 import com.zaitunlabs.zlcore.modules.shaum_sholat.CountDownSholatReminderUtils;
 import com.zaitunlabs.zlcore.core.CanvasActivity;
-import com.zaitunlabs.zlcore.utils.FileUtils;
+import com.zaitunlabs.zlcore.utils.FileUtil;
 import com.zaitunlabs.zlcore.views.ASTextView;
 import com.zaitunlabs.zlcore.views.CanvasLayout;
 import com.zaitunlabs.zlcore.views.CanvasSection;
@@ -151,7 +151,7 @@ public class Faedah extends CanvasActivity {
 		// set data
 		List<SimpleItemDescriptionModel> data = null;
 
-		data = new Gson().fromJson(FileUtils.getReaderFromRawFile(this, R.raw.faedah), new TypeToken<List<SimpleItemDescriptionModel>>(){}.getType());
+		data = new Gson().fromJson(FileUtil.getReaderFromRawFile(this, R.raw.faedah), new TypeToken<List<SimpleItemDescriptionModel>>(){}.getType());
 
 
 		Iterator<SimpleItemDescriptionModel> iterator = data.iterator();

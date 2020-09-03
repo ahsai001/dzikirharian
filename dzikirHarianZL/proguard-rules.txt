@@ -196,19 +196,7 @@
 
 
 #activeandroid
--keep class com.activeandroid.** { *; }
--keep class * extends com.activeandroid.Model
--keep class * extends com.activeandroid.serializer.TypeSerializer
--keep public class * extends com.activeandroid.ActiveRecordBase
-
--keep class com.zaitunlabs.dzikirharian.model.** { *;}
--keep class com.zaitunlabs.dzikirharian.model.* { *;}
-
--keep class com.zaitunlabs.zlcore.models.** { *;}
--keep class com.zaitunlabs.zlcore.models.* { *;}
 
 -keepattributes *Column*
 -keepattributes *Table*
 -keepattributes *Annotation*
-
--keepclasseswithmembers class * { @com.activeandroid.annotation.Column <fields>; }

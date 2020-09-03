@@ -19,9 +19,9 @@ import android.widget.LinearLayout.LayoutParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.squareup.picasso.Picasso;
 import com.zaitunlabs.dzikirharian.R;
-import com.zaitunlabs.zlcore.utils.CommonUtils;
-import com.zaitunlabs.zlcore.utils.DateStringUtils;
-import com.zaitunlabs.zlcore.utils.DebugUtils;
+import com.zaitunlabs.zlcore.utils.CommonUtil;
+import com.zaitunlabs.zlcore.utils.DateStringUtil;
+import com.zaitunlabs.zlcore.utils.DebugUtil;
 import com.zaitunlabs.zlcore.utils.Prefs;
 import com.zaitunlabs.zlcore.views.ASTextView;
 import com.zaitunlabs.zlcore.views.TopCropImageView;
@@ -36,7 +36,7 @@ public class PageListAdapter extends BaseAdapter{
 		this.imageList = imageList;
 		this.context = context;
 		height = 150;
-		switch (CommonUtils.getDisplayMetricsDensityDPIInString(context).toLowerCase()){
+		switch (CommonUtil.getDisplayMetricsDensityDPIInString(context).toLowerCase()){
 			case "ldpi":
 				height = 40;
 				break;
@@ -82,7 +82,7 @@ public class PageListAdapter extends BaseAdapter{
 		long lastRead = Prefs.with(context).getLong("last-read:"+subHeaderTitle+":"+imageList.get(position), 0);
 		Date lastReadDate = new Date();
 		lastReadDate.setTime(lastRead);
-		if(DateStringUtils.compareToDay(lastReadDate,new Date(), Locale.getDefault())==0){
+		if(DateStringUtil.compareToDay(lastReadDate,new Date(), Locale.getDefault())==0){
 			isDone = true;
 		}
 
@@ -99,7 +99,7 @@ public class PageListAdapter extends BaseAdapter{
 			ll.setOrientation(LinearLayout.HORIZONTAL);
 			ll.setWeightSum(10);
 			ll.setGravity(Gravity.CENTER_VERTICAL);
-			//ll.setMinimumHeight(CommonUtils.getAppHeight(context)/6);
+			//ll.setMinimumHeight(CommonUtil.getAppHeight(context)/6);
 
 			ll.addView(holder.getNumber(), new LinearLayout.LayoutParams(0, height, 2));
 			ll.addView(holder.getImageView(), new LinearLayout.LayoutParams(0, height, 2));
@@ -112,18 +112,18 @@ public class PageListAdapter extends BaseAdapter{
 			Log.e("ahmad", "recycle view");
 		}
 
-		//Point dim = CommonUtils.getImageDimension(context, imageList.get(position));
+		//Point dim = CommonUtil.getImageDimension(context, imageList.get(position));
 		//Bitmap bmp = BitmapDecoder.from(context.getResources(), imageList.get(position)).region(new Rect(dim.x/2, 0, dim.x/2, dim.y)).decode();
 
 		/*
-		if(CommonUtils.isOdd(position)){
+		if(CommonUtil.isOdd(position)){
 			convertView.setBackgroundColor(Color.argb(200, 0, 0, 0));
 		}else{
 			convertView.setBackgroundColor(Color.argb(50, 0, 0, 0));
 		}
 		*/
 
-		//DebugUtils.logW("GETVIEW", "position >> "+position);
+		//DebugUtil.logW("GETVIEW", "position >> "+position);
 
 		//set content
 		String bacaanString = imageList.get(position);
@@ -133,14 +133,14 @@ public class PageListAdapter extends BaseAdapter{
 		Log.e("ahmad", bacaanArray[0]);
 
 		if(bacaanArray.length == 4){ //handle dzikir sesudah sholat alhamdu, subhanallah, allahuakbar, laa ilaha
-			//Picasso.get().load(CommonUtils.getIDResource(context, "drawable", bacaanArray[0])).into(holder.getIv());
-			ImageLoader.getInstance().displayImage("drawable://"+CommonUtils.getIDResource(context, "drawable", bacaanArray[0]), holder.getIv());
-			//holder.getIv().setImageResource(CommonUtils.getIDResource(context, "drawable", bacaanArray[0]));
+			//Picasso.get().load(CommonUtil.getIDResource(context, "drawable", bacaanArray[0])).into(holder.getIv());
+			ImageLoader.getInstance().displayImage("drawable://"+CommonUtil.getIDResource(context, "drawable", bacaanArray[0]), holder.getIv());
+			//holder.getIv().setImageResource(CommonUtil.getIDResource(context, "drawable", bacaanArray[0]));
 			//Log.e("ahmad", "picasso in action");
 		}else {
-			//Picasso.get().load(CommonUtils.getIDResource(context, "drawable", bacaanString)).into(holder.getIv());
-			ImageLoader.getInstance().displayImage("drawable://"+CommonUtils.getIDResource(context, "drawable", bacaanString), holder.getIv());
-			//holder.getIv().setImageResource(CommonUtils.getIDResource(context, "drawable", bacaanString));
+			//Picasso.get().load(CommonUtil.getIDResource(context, "drawable", bacaanString)).into(holder.getIv());
+			ImageLoader.getInstance().displayImage("drawable://"+CommonUtil.getIDResource(context, "drawable", bacaanString), holder.getIv());
+			//holder.getIv().setImageResource(CommonUtil.getIDResource(context, "drawable", bacaanString));
 			//Log.e("ahmad", "picasso in action 2");
 		}
 

@@ -9,14 +9,14 @@ import androidx.annotation.NonNull;
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.zlcore.activities.BaseSplashActivity;
 import com.zaitunlabs.zlcore.api.APIConstant;
-import com.zaitunlabs.zlcore.utils.CommonUtils;
-import com.zaitunlabs.zlcore.utils.PermissionUtils;
+import com.zaitunlabs.zlcore.utils.CommonUtil;
+import com.zaitunlabs.zlcore.utils.PermissionUtil;
 import com.zaitunlabs.zlcore.utils.audio.BackSoundService;
 
 public class InitAppNew extends BaseSplashActivity {
     public static final String ARG_NEXT_ACTIVITY_CLASS = "arg_activity_class";
     public static final String ARG_DATA = "arg_data";
-    private PermissionUtils permissionUtils;
+    private PermissionUtil permissionUtils;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,16 +30,16 @@ public class InitAppNew extends BaseSplashActivity {
 
     @Override
     protected boolean doNextAction() {
-        permissionUtils = PermissionUtils.checkPermissionAndGo(this, 1052, new Runnable() {
+        permissionUtils = PermissionUtil.checkPermissionAndGo(this, 1052, new Runnable() {
             @Override
             public void run() {
-                final Class nextPageClass = (Class) CommonUtils.getSerializableIntent(getIntent(),ARG_NEXT_ACTIVITY_CLASS,HomePage.class);
+                final Class nextPageClass = (Class) CommonUtil.getSerializableIntent(getIntent(),ARG_NEXT_ACTIVITY_CLASS,HomePage.class);
                 BackSoundService.startBackSound(InitAppNew.this, new String[]{InitAppNew.this.getString(R.string.backsound_1)});
 
                 try {
                     Intent nextPageIntent = new Intent(InitAppNew.this, nextPageClass);
 
-                    String data = CommonUtils.getStringIntent(getIntent(),ARG_DATA, null);
+                    String data = CommonUtil.getStringIntent(getIntent(),ARG_DATA, null);
                     if(data != null && nextPageClass == DzikirBoard.class) {
                         nextPageIntent.putExtra("subTitle","Dzikir di waktu "+data);
                         nextPageIntent.putExtra("waktu",data);
@@ -52,6 +52,11 @@ public class InitAppNew extends BaseSplashActivity {
             }
         }, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION);
 
+        return false;
+    }
+
+    @Override
+    protected boolean isMeidIncluded() {
         return false;
     }
 

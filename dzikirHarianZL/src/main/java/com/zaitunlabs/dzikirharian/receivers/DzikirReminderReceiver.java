@@ -14,8 +14,8 @@ import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.dzikirharian.activity.DzikirBoard;
 import com.zaitunlabs.dzikirharian.activity.InitAppNew;
 import com.zaitunlabs.dzikirharian.services.DzikirReminderService;
-import com.zaitunlabs.zlcore.utils.CommonUtils;
-import com.zaitunlabs.zlcore.utils.IntegerIDUtils;
+import com.zaitunlabs.zlcore.utils.CommonUtil;
+import com.zaitunlabs.zlcore.utils.IntegerIDUtil;
 import com.zaitunlabs.zlcore.utils.Prefs;
 
 import java.util.Calendar;
@@ -36,8 +36,8 @@ public class DzikirReminderReceiver extends BroadcastReceiver {
 
         wl.acquire();
 
-        boolean isShow = CommonUtils.getBooleanIntent(intent, DzikirReminderService.PARAM_SHOW_FLAG, false);
-        String message = CommonUtils.getStringIntent(intent, DzikirReminderService.PARAM_MESSAGE, "");
+        boolean isShow = CommonUtil.getBooleanIntent(intent, DzikirReminderService.PARAM_SHOW_FLAG, false);
+        String message = CommonUtil.getStringIntent(intent, DzikirReminderService.PARAM_MESSAGE, "");
         showNotification(context,isShow,message);
 
         wl.release();
@@ -81,7 +81,7 @@ public class DzikirReminderReceiver extends BroadcastReceiver {
             }
 
 
-            intent.setAction("com.zaitunlabs.dzikirharian.reminder_notification"+ IntegerIDUtils.getID(context));
+            intent.setAction("com.zaitunlabs.dzikirharian.reminder_notification"+ IntegerIDUtil.getID(context));
             PendingIntent pi = PendingIntent.getActivity(context, 232, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
