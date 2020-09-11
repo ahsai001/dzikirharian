@@ -105,7 +105,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-places:17.0.0'
 
 
-    implementation 'com.github.ahsai001:zlcore:1.10.81.183'
+    implementation 'com.github.ahsai001:zlcore:1.10.83.189'
     //implementation project(':zlcore')
 
     implementation 'com.github.ahsai001.SQLiteWrapper:Core:0.3.13.8'

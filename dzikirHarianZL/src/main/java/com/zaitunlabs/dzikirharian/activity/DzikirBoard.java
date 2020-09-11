@@ -579,9 +579,7 @@ public class DzikirBoard extends CanvasActivity {
 
 		dzikirView.addViewInLinearLayout(iv4);
 
-
 		dzikirView.setASGestureListener(listener);
-		
 
 		translatePart = new ASTextView(this);
 		translatePart.setTypeface(Typeface.createFromAsset(this.getAssets(), "fonts/albino/albino.ttf"));

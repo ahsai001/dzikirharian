@@ -1,5 +1,9 @@
 [
     {
+        "item": "version rc",
+        "description": "- aktifkan mode landscape\n- ubah halaman paging dengan image terpisah\n- perbaikan kecil lainnya"
+    },
+    {
         "item": "version 1.18.28.50",
         "description": "- tambah fitur 'tandai sudah dibaca'\n- perbaikan UI saat tersedia bar navigasi"
     },{

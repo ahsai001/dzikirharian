@@ -54,7 +54,6 @@
          
         <activity
             android:name=".activity.InitAppNew"
-            android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name" >
             <intent-filter>
@@ -66,26 +65,17 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".activity.HomePage"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.HomePage"/>
         <!-- <activity android:name=".activity.HomePage" android:configChanges="keyboardHidden|orientation"/> -->
-        <activity android:name=".activity.DzikirPagiPetang"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.DzikirSetelahSholat"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.DzikirPagiPetang"/>
+        <activity android:name=".activity.DzikirSetelahSholat"/>
         <activity android:name=".activity.DzikirBoard"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.FaedahDanReferensi"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.Faedah"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.Referensi"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.Mukadimah"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.NewPage"
-            android:screenOrientation="portrait"/>
+            android:launchMode="singleTask"/>
+        <activity android:name=".activity.FaedahDanReferensi"/>
+        <activity android:name=".activity.Faedah"/>
+        <activity android:name=".activity.Referensi"/>
+        <activity android:name=".activity.Mukadimah"/>
+        <activity android:name=".activity.NewPage"/>
 
 
         <service android:name=".services.DzikirReminderService"
