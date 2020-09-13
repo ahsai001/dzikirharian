@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.squareup.picasso.Picasso;
 import com.zaitunlabs.dzikirharian.R;
 import com.zaitunlabs.zlcore.utils.CommonUtil;
@@ -35,7 +34,7 @@ public class PageListAdapter extends BaseAdapter{
 	public PageListAdapter(Context context, ArrayList<String> imageList, String subHeaderTitle) {
 		this.imageList = imageList;
 		this.context = context;
-		height = 150;
+		/*height = 150;
 		switch (CommonUtil.getDisplayMetricsDensityDPIInString(context).toLowerCase()){
 			case "ldpi":
 				height = 40;
@@ -55,7 +54,7 @@ public class PageListAdapter extends BaseAdapter{
 			case "xxxhdpi":
 				height = 270;
 				break;
-		}
+		}*/
 
 		this.subHeaderTitle = subHeaderTitle;
 	}
@@ -87,7 +86,7 @@ public class PageListAdapter extends BaseAdapter{
 		}
 
 		if(convertView == null){
-			holder = new ViewHolder(new TopCropImageView(context), new ASTextView(context), new ImageView(context));
+			holder = new ViewHolder(new ImageView(context), new ASTextView(context), new ImageView(context));
 			//holder.getIv().setAdjustViewBounds(true);
 			//holder.getIv().setScaleType(ScaleType.FIT_XY);
 
@@ -129,40 +128,20 @@ public class PageListAdapter extends BaseAdapter{
 		String bacaanString = imageList.get(position);
 		String[] bacaanArray = bacaanString.split(",");
 
-		Log.e("ahmad", bacaanString);
-		Log.e("ahmad", bacaanArray[0]);
+		//Log.e("ahmad", bacaanString);
+		//Log.e("ahmad", bacaanArray[0]);
 
 		if(bacaanArray.length == 4){ //handle dzikir sesudah sholat alhamdu, subhanallah, allahuakbar, laa ilaha
-			//Picasso.get().load(CommonUtil.getIDResource(context, "drawable", bacaanArray[0])).into(holder.getIv());
-			ImageLoader.getInstance().displayImage("drawable://"+CommonUtil.getIDResource(context, "drawable", bacaanArray[0]), holder.getIv());
-			//holder.getIv().setImageResource(CommonUtil.getIDResource(context, "drawable", bacaanArray[0]));
-			//Log.e("ahmad", "picasso in action");
+			Picasso.get().load(CommonUtil.getIDResource(context, "drawable", bacaanArray[0].replace(".png", "_preview.png"))).into(holder.getIv());
 		}else {
-			//Picasso.get().load(CommonUtil.getIDResource(context, "drawable", bacaanString)).into(holder.getIv());
-			ImageLoader.getInstance().displayImage("drawable://"+CommonUtil.getIDResource(context, "drawable", bacaanString), holder.getIv());
-			//holder.getIv().setImageResource(CommonUtil.getIDResource(context, "drawable", bacaanString));
-			//Log.e("ahmad", "picasso in action 2");
+			Picasso.get().load(CommonUtil.getIDResource(context, "drawable", bacaanString.replace(".png", "_preview.png"))).into(holder.getIv());
 		}
 
-		/*
-		final TopCropImageView a = holder.getIv();
-		ImageLoader.getInstance().loadImage("drawable://" + imageList.get(position), new ImageSize(172, 100), new SimpleImageLoadingListener(){
-			@Override
-			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-				a.setImageBitmap(loadedImage);
-			}
-
-		});
-		*/
-		//Picasso.with(context).load(imageList.get(position)).resize(172, 100).into(holder.getIv());
-		//Picasso.with(context).load(imageList.get(position)).fit().centerCrop().into(holder.getIv());
-		//holder.getIv().setImageResource(imageList.get(position));
 
 		if(isDone){
 			holder.getNumber().setVisibility(View.GONE);
 			holder.getImageView().setVisibility(View.VISIBLE);
-			//holder.getImageView().setImageResource(R.drawable.icon_rate_this_app);
-			ImageLoader.getInstance().displayImage("drawable://"+R.drawable.icon_rate_this_app, holder.getImageView());
+			Picasso.get().load(R.drawable.icon_rate_this_app).into(holder.getImageView());
 
 		} else {
 			holder.getNumber().setVisibility(View.VISIBLE);
@@ -174,20 +153,24 @@ public class PageListAdapter extends BaseAdapter{
 
 
 
-	private class ViewHolder{
-		TopCropImageView iv = null;
+	public static class ViewHolder{
+		ImageView iv = null;
 		ASTextView number = null;
 		ImageView imageView = null;
-		public TopCropImageView getIv() {
+		public ImageView getIv() {
 			return iv;
 		}
 		public ASTextView getNumber() {
 			return number;
 		}
-		public ViewHolder(TopCropImageView iv, ASTextView number, ImageView imageView) {
+		public ViewHolder(ImageView iv, ASTextView number, ImageView imageView) {
 			this.iv = iv;
 			this.number = number;
 			this.imageView = imageView;
+
+			//
+			this.iv.setAdjustViewBounds(true);
+			this.imageView.setAdjustViewBounds(true);
 		}
 
 		public ImageView getImageView() {

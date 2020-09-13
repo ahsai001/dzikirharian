@@ -75,7 +75,10 @@
         <activity android:name=".activity.Faedah"/>
         <activity android:name=".activity.Referensi"/>
         <activity android:name=".activity.Mukadimah"/>
-        <activity android:name=".activity.NewPage"/>
+        <activity android:name=".activity.NewPage">
+
+
+        </activity>
 
 
         <service android:name=".services.DzikirReminderService"

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 30
@@ -9,7 +10,7 @@ android {
         applicationId "com.zaitunlabs.dzikirharian"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 27
+        versionCode 28
         //versionName "1.9.9.8" --> 9
         //versionName "1.9.10.9" --> 10
         //versionName "1.9.11.12" --> 11
@@ -30,7 +31,7 @@ android {
 
         //versionName "1.18.25.44" -> 24
 
-        versionName "1.18.28.50"
+        versionName "1.20.29.54"
         multiDexEnabled true
 
     }
@@ -87,12 +88,13 @@ dependencies {
     //implementation files('libs/socialauth-android-3.2.jar')
     //compile files('libs/support-v4-r7.jar')
     //implementation files('libs/universal-image-loader-1.9.2.jar')
-    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    //implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     implementation 'com.google.android.material:material:1.3.0-alpha02'
 
     implementation 'com.google.firebase:firebase-core:17.5.0'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
 
 
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
@@ -105,7 +107,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-places:17.0.0'
 
 
-    implementation 'com.github.ahsai001:zlcore:1.10.83.189'
+    implementation 'com.github.ahsai001:zlcore:1.10.84.190'
     //implementation project(':zlcore')
 
     implementation 'com.github.ahsai001.SQLiteWrapper:Core:0.3.13.8'
@@ -114,5 +116,3 @@ dependencies {
 
 }
 
-
-apply plugin: 'com.google.gms.google-services'

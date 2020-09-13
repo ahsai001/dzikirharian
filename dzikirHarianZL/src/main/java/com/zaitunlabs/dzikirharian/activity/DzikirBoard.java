@@ -20,9 +20,12 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
 
 import android.os.Handler;
+import android.os.PersistableBundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -44,6 +47,7 @@ import com.zaitunlabs.zlcore.modules.shaum_sholat.CountDownSholatReminderUtils;
 import com.zaitunlabs.zlcore.core.CanvasActivity;
 import com.zaitunlabs.zlcore.utils.DateStringUtil;
 import com.zaitunlabs.zlcore.utils.FileUtil;
+import com.zaitunlabs.zlcore.utils.MultipleClickHandler;
 import com.zaitunlabs.zlcore.utils.NavigationHandler;
 import com.zaitunlabs.zlcore.utils.ViewUtil;
 import com.zaitunlabs.zlcore.utils.audio.AudioService;
@@ -116,6 +120,9 @@ public class DzikirBoard extends CanvasActivity {
 	DelayedAction delayedAction;
 
 	String subHeaderTitle;
+
+	CanvasSection dzikirView;
+	boolean isReadingMode = false;
 
 
 	@Override
@@ -239,7 +246,7 @@ public class DzikirBoard extends CanvasActivity {
 		
 
 		// bagian inti dzikir
-		final CanvasSection dzikirView = mainSection.addSubSectionWithFrame("dzikirView", 5,10, 90, 90, false).setSectionAsLinearLayout(LinearLayout.VERTICAL);
+		dzikirView = mainSection.addSubSectionWithFrame("dzikirView", 5,10, 90, 90, false).setSectionAsLinearLayout(LinearLayout.VERTICAL);
 
 		dzikirView.getShiftPositionHandler().addRectToDimensionState(5,10, 90, 90);
 		dzikirView.getShiftPositionHandler().addRectToDimensionState(5,10, 90, 123);
@@ -337,11 +344,28 @@ public class DzikirBoard extends CanvasActivity {
 		navView.addViewWithFrame(pageView, 30, 10, 40, 100);
 
 
-		delayedAction = new DelayedAction(20 * 60 * 1000, new Runnable() {
+		delayedAction = new DelayedAction(1 * 1000, new ActionRunnable() {
 			@Override
 			public void run() {
-				Prefs.with(DzikirBoard.this).save("last-read:"+subHeaderTitle+":"+bacaanList.get(navHandler.getIndex()), new Date().getTime());
-				reloadCounterImage();
+				boolean isDone = isDone();
+
+				if(doChange){
+					if(isDone){
+						Prefs.with(DzikirBoard.this).remove("last-read:" + subHeaderTitle + ":" + bacaanList.get(navHandler.getIndex()));
+						reloadCounterImage(false);
+					} else {
+						Prefs.with(DzikirBoard.this).save("last-read:" + subHeaderTitle + ":" + bacaanList.get(navHandler.getIndex()), new Date().getTime());
+						reloadCounterImage(true);
+					}
+				} else {
+					if (isDone) {
+						reloadCounterImage(true);
+					} else {
+						reloadCounterImage(false);
+					}
+				}
+
+				doChange = false;
 			}
 		});
 		
@@ -398,16 +422,13 @@ public class DzikirBoard extends CanvasActivity {
 					iv4.setVisibility(View.GONE);
 				}
 
-				Picasso.get().load(counterList.get(index)).into(countImageView.getImageView());
-
 				tv.setText(terjemahList.get(index));
 
 				dalilFullText.setText(dalilList.get(index));
 
 				dzikirView.setVScrollOnTop();
 
-				reloadCounterImage();
-				delayedAction.go();
+				delayedAction.goNow(false);
 				return false;
 			}
 		});
@@ -438,7 +459,6 @@ public class DzikirBoard extends CanvasActivity {
 		//iv.getParent().requestDisallowInterceptTouchEvent(true);
 
 		ASGestureListener listener = new ASGestureListener() {
-			boolean isReadingMode = false;
 			@Override
 			public boolean upEventOccurred(float x, float y) {
 				return true;
@@ -500,27 +520,7 @@ public class DzikirBoard extends CanvasActivity {
 			public boolean doubleTapEventOccured() {
 				//goto reading mode
 				DebugUtil.logE("GESTURE DETECTOR", "double tap");
-				if(!isReadingMode){
-					//goto reading mode
-					isReadingMode = !isReadingMode;
-					headerSection.getShiftPositionHandler().changeStateToDimension(1, true);
-					subHeaderSection.getShiftPositionHandler().changeStateToDimension(1, true);
-					mainSection.getShiftPositionHandler().changeStateToDimension(1, true);
-					dzikirView.getShiftPositionHandler().changeStateToDimension(1,true);
-					sliderSection.getShiftPositionHandler().changeStateToDimension(1, true);
-					countImageView.setPositionLocked(false);
-					countImageView.setPositionToRect(new Rect(40,77,20,15),true);
-				}else{
-					//back to normal mode
-					isReadingMode = !isReadingMode;
-					headerSection.getShiftPositionHandler().changeStateToDimension(0, true);
-					subHeaderSection.getShiftPositionHandler().changeStateToDimension(0, true);
-					mainSection.getShiftPositionHandler().changeStateToDimension(0, true);
-					dzikirView.getShiftPositionHandler().changeStateToDimension(0,true);
-					sliderSection.getShiftPositionHandler().changeStateToDimension(0,true);
-					countImageView.setPositionLocked(true);
-					countImageView.setPositionToOrigin(true);
-				}
+				toggleReadingMode();
 				return true;
 			}
 
@@ -555,7 +555,6 @@ public class DzikirBoard extends CanvasActivity {
 
 		dzikirView.addViewInLinearLayout(iv);
 
-
 		iv2 = new ASImageView(this);
 		iv2.setScaleType(ScaleType.FIT_XY);
 		iv2.setAdjustViewBounds(true);
@@ -563,14 +562,12 @@ public class DzikirBoard extends CanvasActivity {
 
 		dzikirView.addViewInLinearLayout(iv2);
 
-
 		iv3 = new ASImageView(this);
 		iv3.setScaleType(ScaleType.FIT_XY);
 		iv3.setAdjustViewBounds(true);
 		iv3.setASGestureListener(listener);
 
 		dzikirView.addViewInLinearLayout(iv3);
-
 
 		iv4 = new ASImageView(this);
 		iv4.setScaleType(ScaleType.FIT_XY);
@@ -756,9 +753,7 @@ public class DzikirBoard extends CanvasActivity {
 
 		setContentView(canvas.getFillParentView());
 
-		
 		getMovableMenu().setListener(new ASMovableMenuListener() {
-
 			@Override
 			public void menuWillBeOpened() {
 				slidingLayer.closeLayer(true);
@@ -789,19 +784,83 @@ public class DzikirBoard extends CanvasActivity {
 		countDownSholatReminderUtils = new CountDownSholatReminderUtils();
 
 
+		if(savedInstanceState == null && previousSavedPage > 0) {
+			CommonUtil.showDialog2Option(this, "Perhatian", "Apakah anda ingin melanjutkan sesi sebelumnya?",
+					"Ya", new Runnable() {
+						@Override
+						public void run() {
+							//do nothing
+							if(Prefs.with(DzikirBoard.this).getBoolean("standby", false)){
+								keepScreenOnSwitch.setChecked(true);
+							}
+						}
+					}, "Tidak", new Runnable() {
+						@Override
+						public void run() {
+							previousSavedPage = 0;
+							navHandler.setIndex(0);
+						}
+					});
+		}
+
+		if(savedInstanceState != null) {
+			if (Prefs.with(DzikirBoard.this).getBoolean("standby", false)) {
+				keepScreenOnSwitch.setChecked(true);
+			}
+			isReadingMode = !savedInstanceState.getBoolean("isReadingMode");
+			toggleReadingMode();
+		}
 	}
 
-	private void reloadCounterImage() {
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putBoolean("isReadingMode", isReadingMode);
+	}
+
+
+	private void toggleReadingMode() {
+		if(!isReadingMode){
+			//goto reading mode
+			isReadingMode = true;
+			headerSection.getShiftPositionHandler().changeStateToDimension(1, true);
+			subHeaderSection.getShiftPositionHandler().changeStateToDimension(1, true);
+			mainSection.getShiftPositionHandler().changeStateToDimension(1, true);
+			dzikirView.getShiftPositionHandler().changeStateToDimension(1,true);
+			sliderSection.getShiftPositionHandler().changeStateToDimension(1, true);
+			countImageView.setPositionLocked(false);
+			countImageView.setPositionToRect(new Rect(40,77,20,15),true);
+		}else{
+			//back to normal mode
+			isReadingMode = false;
+			headerSection.getShiftPositionHandler().changeStateToDimension(0, true);
+			subHeaderSection.getShiftPositionHandler().changeStateToDimension(0, true);
+			mainSection.getShiftPositionHandler().changeStateToDimension(0, true);
+			dzikirView.getShiftPositionHandler().changeStateToDimension(0,true);
+			sliderSection.getShiftPositionHandler().changeStateToDimension(0,true);
+			countImageView.setPositionLocked(true);
+			countImageView.setPositionToOrigin(true);
+		}
+	}
+
+
+	private boolean isDone(){
 		long lastRead = Prefs.with(DzikirBoard.this).getLong("last-read:"+subHeaderTitle+":"+bacaanList.get(navHandler.getIndex()), 0);
 		Date lastReadDate = new Date();
 		lastReadDate.setTime(lastRead);
-		if(DateStringUtil.compareToDay(lastReadDate,new Date(), Locale.getDefault())==0){
+		return DateStringUtil.compareToDay(lastReadDate,new Date(), Locale.getDefault())==0;
+	}
+
+	private void reloadCounterImage(boolean isDone) {
+		if(isDone){
 			Resources r = getResources();
 			Drawable[] layers = new Drawable[2];
 			layers[0] = r.getDrawable(counterList.get(navHandler.getIndex()));
 			layers[1] = r.getDrawable(R.drawable.icon_rate_this_app);
 			LayerDrawable layerDrawable = new LayerDrawable(layers);
 			countImageView.getImageView().setImageDrawable(layerDrawable);
+		} else {
+			countImageView.getImageView().setImageResource(counterList.get(navHandler.getIndex()));
 		}
 	}
 
@@ -809,28 +868,39 @@ public class DzikirBoard extends CanvasActivity {
 	public void onCreateMovableMenu(ASMovableMenu menu) {
 		super.onCreateMovableMenu(menu);
 
-		Button doneButton = new Button(this);
-		doneButton.setText("Tandai sudah dibaca");
+		boolean isDone = isDone();
+
+		final Button doneButton = new Button(this);
+		doneButton.setAllCaps(false);
+		if(isDone){
+			doneButton.setText("Tandai belum dibaca");
+		} else {
+			doneButton.setText("Tandai sudah dibaca");
+		}
 		menu.addItemMenu(doneButton, new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				delayedAction.goNow();
-				CommonUtil.showToast(DzikirBoard.this, "Bacaan sudah berhasil ditandai");
+				delayedAction.goNow(true);
 			}
 		}, null);
 
-		Button doneNextButton = new Button(this);
-		doneNextButton.setText("Tandai sudah dibaca & lanjut berikutnya");
+		final Button doneNextButton = new Button(this);
+		doneNextButton.setAllCaps(false);
+		if(isDone){
+			doneNextButton.setText("Tandai belum dibaca & lanjut berikutnya");
+		} else {
+			doneNextButton.setText("Tandai sudah dibaca & lanjut berikutnya");
+		}
 		menu.addItemMenu(doneNextButton, new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				delayedAction.goNow();
+				delayedAction.goNow(true);
 				navHandler.next();
-				CommonUtil.showToast(DzikirBoard.this, "Bacaan sudah berhasil ditandai");
 			}
 		}, null);
 		
 		Button pageSelection = new Button(this);
+		pageSelection.setAllCaps(false);
 		pageSelection.setText("Pilih halaman");
 		menu.addItemMenu(pageSelection, new View.OnClickListener() {
 			@Override
@@ -878,24 +948,6 @@ public class DzikirBoard extends CanvasActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		if(previousSavedPage > 0) {
-			CommonUtil.showDialog2Option(this, "Perhatian", "Apakah anda ingin melanjutkan sesi sebelumnya?",
-					"Ya", new Runnable() {
-						@Override
-						public void run() {
-							//do nothing
-							if(Prefs.with(DzikirBoard.this).getBoolean("standby", false)){
-								keepScreenOnSwitch.setChecked(true);
-							}
-						}
-					}, "Tidak", new Runnable() {
-						@Override
-						public void run() {
-							previousSavedPage = 0;
-							navHandler.setIndex(0);
-						}
-					});
-		}
 	}
 
 	@Override
@@ -923,7 +975,7 @@ public class DzikirBoard extends CanvasActivity {
 		}
 
 		countDownSholatReminderUtils.startCountDown(this,countDownTimerHeaderText);
-		delayedAction.go();
+		delayedAction.goNow(false);
 	}
 
 	@Override
@@ -940,19 +992,29 @@ public class DzikirBoard extends CanvasActivity {
 		}
 	}
 
+	public static class ActionRunnable implements Runnable{
+		boolean doChange = false;
+		public ActionRunnable(){
+		}
+		@Override
+		public void run() {
 
-	class DelayedAction{
+		}
+	}
+
+	public static class DelayedAction{
 		private int delayedInMS=0;
 		private Handler handler = new Handler();
-		private Runnable action;
+		private ActionRunnable action;
 
-		public DelayedAction(int delayedInMS, Runnable action){
+		public DelayedAction(int delayedInMS, ActionRunnable action){
 			this.delayedInMS = delayedInMS;
 			this.action = action;
 		}
 
-		public void go(){
+		public void go(boolean doChange){
 			if(action != null) {
+				action.doChange = doChange;
 				handler.removeCallbacks(action);
 				handler.postDelayed(action, delayedInMS);
 			}
@@ -965,8 +1027,9 @@ public class DzikirBoard extends CanvasActivity {
 			}
 		}
 
-		public void goNow(){
+		public void goNow(boolean doChange){
 			if(action != null) {
+				action.doChange = doChange;
 				handler.removeCallbacks(action);
 				action.run();
 			}

@@ -37,16 +37,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notifBody = remoteMessage.getNotification().getBody();
         }
 
-        Map<String, String> remoteData = remoteMessage.getData();
-        Map<String, Object> data = new HashMap<>();
-        Set<Map.Entry<String, String>> entrySet = remoteData.entrySet();
-
-        for (Map.Entry<String, String> item : entrySet) {
-            data.put(item.getKey(), item.getValue());
-        }
-
-
-        NotificationUtil.onMessageReceived(getBaseContext(),data, notifTitle, notifBody
+        NotificationUtil.onMessageReceived(getBaseContext(),remoteMessage.getData(), notifTitle, notifBody
                 ,HomePage.class, null, null, R.string.app_name,R.drawable.icon_apps,
                 null,false);
     }
