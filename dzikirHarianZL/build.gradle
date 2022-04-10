@@ -63,7 +63,7 @@ android {
 
 repositories {
     //maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-    maven { url 'http://dl.bintray.com/amulyakhare/maven' }
+    //maven { url 'http://dl.bintray.com/amulyakhare/maven' }
     maven { url 'https://mvnrepository.com/artifact/ch.acra/acra' }
     maven { url "https://jitpack.io" }
 }

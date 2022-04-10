@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.ahsai001.SQLiteWrapper:Core:0.3.13.8@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4a8c93899da125c608543208e608840b/jetified-Core-0.3.13.8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4a8c93899da125c608543208e608840b/jetified-Core-0.3.13.8/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4a8c93899da125c608543208e608840b/jetified-Core-0.3.13.8/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ahsai001.SQLiteWrapper/Core/0.3.13.8/7aa929bcf77deca02faa48948728392042495e2f/Core-0.3.13.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

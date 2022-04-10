@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "map": [
+                {
+                    "source": "/Users/ahmad/.gradle/caches/transforms-2/files-2.1/35703d8a2f8cb9cd8a7487a49a9e1377/material-1.3.0-alpha02/res/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,107",
+                        "endColumns": "51,76",
+                        "endOffsets": "102,179"
+                    }
+                }
+            ]
+        }
+    ]
+}

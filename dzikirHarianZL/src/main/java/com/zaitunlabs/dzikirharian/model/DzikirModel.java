@@ -6,6 +6,7 @@ public class DzikirModel {
 	private String terjemah;
 	private String dalil;
 	private String sound;
+	private String soundCount;
 	private String runningtext;
 
 	public String getBacaan() {
@@ -43,5 +44,13 @@ public class DzikirModel {
 	}
 	public void setRunningtext(String runningtext) {
 		this.runningtext = runningtext;
+	}
+
+	public String getSoundCount() {
+		return soundCount;
+	}
+
+	public void setSoundCount(String soundCount) {
+		this.soundCount = soundCount;
 	}
 }

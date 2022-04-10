@@ -1,5 +1,7 @@
 package com.zaitunlabs.dzikirharian.activity;
 
+import static com.zaitunlabs.zlcore.views.CanvasSection.SAME_AS_OTHER_SIDE;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -78,6 +80,7 @@ public class DzikirBoard extends CanvasActivity {
 	ArrayList<Integer> counterList;
 	ArrayList<String> dalilList;
 	ArrayList<String> soundList;
+	ArrayList<String> soundCountList;
 	ArrayList<String> runningTextList;
 
 	ASTextView tv;
@@ -268,49 +271,7 @@ public class DzikirBoard extends CanvasActivity {
 		
 		final CanvasSection pageContent = slidingPageSelectorCanvas.addSubSectionWithFrame("pageContent", 0, 10, 100, 90, true).setSectionAsLinearLayout(LinearLayout.VERTICAL);
 		
-		slidingPageSelectorCanvas.getShiftPositionHandler().setDimensionStateListener(new DimensionStateListener() {
-			
-			@Override
-			public boolean rectForCurrentDimensionState(Rect currentRectState) {
-				return false;
-			}
-			
-			@Override
-			public boolean indexForCurrentDimensionState(int currentIndexState) {
-				if(currentIndexState == 0){
-					//close
-					navHandler.showNavigationViewWithState();
-					pageContent.removeAllViews();
-					pageView.setText("Halaman " + (navHandler.getIndex() + 1) + " dari " + navHandler.getCount());
-				}else if(currentIndexState == 1){
-					//open
-					navHandler.hideNavigationView();
-					pageView.setText("pilih halaman ...");
-					final ListView listV = new ListView(DzikirBoard.this);
-					listV.setCacheColorHint(Color.TRANSPARENT);
-					
-					pageContent.addViewInLinearLayout(listV);
 
-					listV.setAdapter(new PageListAdapter(DzikirBoard.this, bacaanList, subHeaderTitle));
-					listV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-						@Override
-						public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-							slidingPageSelectorCanvas.getShiftPositionHandler().changeStateToDimension(0, true);
-							navHandler.setIndex(arg2);
-						}
-					});
-					
-					//listV.clearFocus();
-					listV.postDelayed(new Runnable() {
-						@Override
-						public void run() {
-							listV.setSelection(navHandler.getIndex());
-						}
-					}, 400);
-				}
-				return false;
-			}
-		});
 		
 		
 		// bagian navigasi
@@ -322,11 +283,69 @@ public class DzikirBoard extends CanvasActivity {
 
 		final ASImageButtonView nextView = new ASImageButtonView(this);
 		nextView.setImageDrawable(R.drawable.arrow_right);
-		navView.addViewWithFrame(nextView, 80, 10, 20, 100);
+		navView.addViewWithFrame(nextView, 90, 20, 10, SAME_AS_OTHER_SIDE);
+
+		final ASImageButtonView doneView = new ASImageButtonView(this);
+		doneView.setImageDrawable(R.drawable.ic_baseline_done_24);
+		navView.addViewWithFrame(doneView, 75, 20, 10, SAME_AS_OTHER_SIDE);
+		doneView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				delayedAction.doneNow();
+				navHandler.next();
+			}
+		});
 
 		final ASImageButtonView prevView = new ASImageButtonView(this);
 		prevView.setImageDrawable(R.drawable.arrow_left);
-		navView.addViewWithFrame(prevView, 0, 10, 20, 100);
+		navView.addViewWithFrame(prevView, 0, 20, 10, SAME_AS_OTHER_SIDE);
+
+
+		slidingPageSelectorCanvas.getShiftPositionHandler().setDimensionStateListener(new DimensionStateListener() {
+
+			@Override
+			public boolean rectForCurrentDimensionState(Rect currentRectState) {
+				return false;
+			}
+
+			@Override
+			public boolean indexForCurrentDimensionState(int currentIndexState) {
+				if(currentIndexState == 0){
+					//close
+					navHandler.showNavigationViewWithState();
+					pageContent.removeAllViews();
+					pageView.setText("Halaman " + (navHandler.getIndex() + 1) + " dari " + navHandler.getCount());
+					doneView.setVisibility(View.VISIBLE);
+				}else if(currentIndexState == 1){
+					//open
+					navHandler.hideNavigationView();
+					pageView.setText("pilih halaman ...");
+					doneView.setVisibility(View.GONE);
+					final ListView listV = new ListView(DzikirBoard.this);
+					listV.setCacheColorHint(Color.TRANSPARENT);
+
+					pageContent.addViewInLinearLayout(listV);
+
+					listV.setAdapter(new PageListAdapter(DzikirBoard.this, bacaanList, subHeaderTitle));
+					listV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+						@Override
+						public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+							slidingPageSelectorCanvas.getShiftPositionHandler().changeStateToDimension(0, true);
+							navHandler.setIndex(arg2);
+						}
+					});
+
+					//listV.clearFocus();
+					listV.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							listV.setSelection(navHandler.getIndex());
+						}
+					}, 400);
+				}
+				return false;
+			}
+		});
 
 		pageView = new TextView(this);
 		pageView.setText("prev");
@@ -347,7 +366,7 @@ public class DzikirBoard extends CanvasActivity {
 		delayedAction = new DelayedAction(1 * 1000, new ActionRunnable() {
 			@Override
 			public void run() {
-				boolean isDone = isDone();
+				boolean isDone = this.isDone != null ? this.isDone : isDone();
 
 				if(doChange){
 					if(isDone){
@@ -378,6 +397,12 @@ public class DzikirBoard extends CanvasActivity {
 				if(runText != null){
 					runText.setText(runningTextList.get(index));
 					runText.startScroll();
+				}
+
+				if (index == counts - 1){
+					doneView.setVisibility(View.GONE);
+				} else {
+					doneView.setVisibility(View.VISIBLE);
 				}
 
 				AudioService.stopAudioSound(DzikirBoard.this);
@@ -611,6 +636,7 @@ public class DzikirBoard extends CanvasActivity {
 	    terjemahList = new ArrayList<String>();
 	    dalilList = new ArrayList<String>();
 	    soundList = new ArrayList<String>();
+	    soundCountList = new ArrayList<>();
     	runningTextList = new ArrayList<String>();
 
 		List<DzikirModel> data = null;
@@ -641,17 +667,15 @@ public class DzikirBoard extends CanvasActivity {
 
 		data = new Gson().fromJson(FileUtil.getReaderFromRawFile(this, rawJSONFile), new TypeToken<List<DzikirModel>>(){}.getType());
 
-
-		Iterator<DzikirModel> iterator = data.iterator();
-	    while(iterator.hasNext()){
-	    	DzikirModel item = iterator.next();
-	    	bacaanList.add(item.getBacaan());
-	    	counterList.add(CommonUtil.getIDResource(this, "drawable", item.getCounter()));
-	    	terjemahList.add(item.getTerjemah());
-	    	dalilList.add(item.getDalil());
-	    	soundList.add(item.getSound());
-	    	runningTextList.add(item.getRunningtext());
-	    }
+		for (DzikirModel item : data) {
+			bacaanList.add(item.getBacaan());
+			counterList.add(CommonUtil.getIDResource(this, "drawable", item.getCounter()));
+			terjemahList.add(item.getTerjemah());
+			dalilList.add(item.getDalil());
+			soundList.add(item.getSound());
+			soundCountList.add(item.getSoundCount());
+			runningTextList.add(item.getRunningtext());
+		}
 	
 	    
 	    
@@ -909,6 +933,32 @@ public class DzikirBoard extends CanvasActivity {
 			}
 		}, /*new Rect(5, 30, 5+90, 30+menu.getTextHeight("goto page ..."))*/ null);
 
+		Button showDalilSelection = new Button(this);
+		showDalilSelection.setAllCaps(false);
+		showDalilSelection.setText("Lihat Dalil");
+		menu.addItemMenu(showDalilSelection, new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				slidingLayer.openLayer(true);
+			}
+		}, null);
+
+		Button readingMore = new Button(this);
+		readingMore.setAllCaps(false);
+		if(isReadingMode){
+			readingMore.setText("Mode Baca Sempit");
+		} else {
+			readingMore.setText("Mode Baca Luas");
+		}
+		menu.addItemMenu(readingMore, new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				toggleReadingMode();
+			}
+		}, null);
+
+
+
 		
 	}
 
@@ -994,6 +1044,7 @@ public class DzikirBoard extends CanvasActivity {
 
 	public static class ActionRunnable implements Runnable{
 		boolean doChange = false;
+		Boolean isDone = null;
 		public ActionRunnable(){
 		}
 		@Override
@@ -1014,6 +1065,7 @@ public class DzikirBoard extends CanvasActivity {
 
 		public void go(boolean doChange){
 			if(action != null) {
+				action.isDone = null;
 				action.doChange = doChange;
 				handler.removeCallbacks(action);
 				handler.postDelayed(action, delayedInMS);
@@ -1027,8 +1079,19 @@ public class DzikirBoard extends CanvasActivity {
 			}
 		}
 
+
+		public void doneNow(){
+			if(action != null) {
+				action.isDone = false;
+				action.doChange = true;
+				handler.removeCallbacks(action);
+				action.run();
+			}
+		}
+
 		public void goNow(boolean doChange){
 			if(action != null) {
+				action.isDone = null;
 				action.doChange = doChange;
 				handler.removeCallbacks(action);
 				action.run();
