@@ -399,11 +399,7 @@ public class DzikirBoard extends CanvasActivity {
 					runText.startScroll();
 				}
 
-				if (index == counts - 1){
-					doneView.setVisibility(View.GONE);
-				} else {
-					doneView.setVisibility(View.VISIBLE);
-				}
+				doneView.setVisibility(View.VISIBLE);
 
 				AudioService.stopAudioSound(DzikirBoard.this);
 				if(BackSoundService.getLastAction() == BackSoundService.ACTION_PAUSE){
