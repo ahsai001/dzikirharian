@@ -8,12 +8,12 @@
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable/rounded_corner_2.xml"
     },
     {
-        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-mdpi_ic_shop_24dp.png.flat",
-        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/generated/res/pngs/debug/drawable-mdpi/ic_shop_24dp.png"
-    },
-    {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable_tabbacaan_selected.png.flat",
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable/tabbacaan_selected.png"
+    },
+    {
+        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-mdpi_ic_shop_24dp.png.flat",
+        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/generated/res/pngs/debug/drawable-mdpi/ic_shop_24dp.png"
     },
     {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-xhdpi_baseline_apps_24.png.flat",
@@ -24,12 +24,12 @@
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable-nodpi/dzikir_zoom12_preview.png"
     },
     {
-        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable_icon_rate_this_app.png.flat",
-        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable/icon_rate_this_app.png"
-    },
-    {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_info_outline_24dp.xml.flat",
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_info_outline_24dp.xml"
+    },
+    {
+        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable_icon_rate_this_app.png.flat",
+        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable/icon_rate_this_app.png"
     },
     {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-nodpi_dzikir_setelah_sholat_zoom4_preview.png.flat",
@@ -120,12 +120,12 @@
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/generated/res/pngs/debug/drawable-ldpi/ic_baseline_done_24.png"
     },
     {
-        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-nodpi_sayyidul_istighfar_zoom6_preview.png.flat",
-        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable-nodpi/sayyidul_istighfar_zoom6_preview.png"
-    },
-    {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-hdpi_ic_baseline_done_24.png.flat",
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/generated/res/pngs/debug/drawable-hdpi/ic_baseline_done_24.png"
+    },
+    {
+        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-nodpi_sayyidul_istighfar_zoom6_preview.png.flat",
+        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable-nodpi/sayyidul_istighfar_zoom6_preview.png"
     },
     {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable_menu_dxikir_sesudah_sholat_copy.png.flat",
@@ -184,12 +184,12 @@
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/generated/res/pngs/debug/drawable-anydpi-v21/baseline_apps_24.xml"
     },
     {
-        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-xxxhdpi_baseline_notification_important_24.png.flat",
-        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/generated/res/pngs/debug/drawable-xxxhdpi/baseline_notification_important_24.png"
-    },
-    {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/raw_dzikirpetang.json.flat",
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/raw/dzikirpetang.json"
+    },
+    {
+        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-xxxhdpi_baseline_notification_important_24.png.flat",
+        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/generated/res/pngs/debug/drawable-xxxhdpi/baseline_notification_important_24.png"
     },
     {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-xxhdpi_baseline_notification_important_24.png.flat",
@@ -356,12 +356,12 @@
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/raw/allahuma_inni_asaluka_afwawalaafiyah_dan_artinya.mp3"
     },
     {
-        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/raw_asbakhna_wa_asbkhalmulkulillah_dan_artinya.mp3.flat",
-        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/raw/asbakhna_wa_asbkhalmulkulillah_dan_artinya.mp3"
-    },
-    {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-nodpi_dzikir_pagi_zoom18_preview.png.flat",
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable-nodpi/dzikir_pagi_zoom18_preview.png"
+    },
+    {
+        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/raw_asbakhna_wa_asbkhalmulkulillah_dan_artinya.mp3.flat",
+        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/raw/asbakhna_wa_asbkhalmulkulillah_dan_artinya.mp3"
     },
     {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/raw_dzikirsesudahsholat_subuh.json.flat",
@@ -384,12 +384,12 @@
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable/papan_dibaca_10x.png"
     },
     {
-        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable_masjid.png.flat",
-        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable/masjid.png"
-    },
-    {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-nodpi_surat_al_ikhlas_zoom1_preview.png.flat",
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable-nodpi/surat_al_ikhlas_zoom1_preview.png"
+    },
+    {
+        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable_masjid.png.flat",
+        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/drawable/masjid.png"
     },
     {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-nodpi_dzikir_setelah_sholat_zoom4.png.flat",
@@ -524,12 +524,12 @@
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/raw/subhanallahiwabihamdi_adadakholqih_dan_artinya.mp3"
     },
     {
-        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/layout_test.xml.flat",
-        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/layout/test.xml"
-    },
-    {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable-mdpi_ic_baseline_done_24.png.flat",
         "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/generated/res/pngs/debug/drawable-mdpi/ic_baseline_done_24.png"
+    },
+    {
+        "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/layout_test.xml.flat",
+        "source": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/res/layout/test.xml"
     },
     {
         "merged": "/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/build/intermediates/res/merged/debug/drawable_menu_faedah.png.flat",

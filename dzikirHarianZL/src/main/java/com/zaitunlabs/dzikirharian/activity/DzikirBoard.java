@@ -20,6 +20,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -123,6 +124,7 @@ public class DzikirBoard extends CanvasActivity {
 	DelayedAction delayedAction;
 
 	String subHeaderTitle;
+	String waktu;
 
 	CanvasSection dzikirView;
 	boolean isReadingMode = false;
@@ -138,7 +140,12 @@ public class DzikirBoard extends CanvasActivity {
 
 		canvas.setBackgroundResource(R.drawable.bgkayu);
 
+
+
 		subHeaderTitle = CommonUtil.getStringIntent(getIntent(), "subTitle", "Dzikir Harian");
+		waktu = CommonUtil.getStringIntent(getIntent(), "waktu", "pagi");
+
+		handleIntent();
 
 		// header
 		// create header
@@ -637,23 +644,23 @@ public class DzikirBoard extends CanvasActivity {
 
 		List<DzikirModel> data = null;
 		int rawJSONFile = 0;
-		if (CommonUtil.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("pagi")) {
+		if (waktu.equalsIgnoreCase("pagi")) {
 			rawJSONFile = R.raw.dzikirpagi;
 			previousSavedPage = Prefs.with(this).getInt("savedPagiPage", 0);
 			savedPageKey = "savedPagiPage";
-		} else if (CommonUtil.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("petang")) {
+		} else if (waktu.equalsIgnoreCase("petang")) {
 			rawJSONFile = R.raw.dzikirpetang;
 			previousSavedPage = Prefs.with(this).getInt("savedPetangPage", 0);
 			savedPageKey = "savedPetangPage";
-		} else if (CommonUtil.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("subuh")) {
+		} else if (waktu.equalsIgnoreCase("subuh")) {
 			rawJSONFile = R.raw.dzikirsesudahsholat_subuh;
 			previousSavedPage = Prefs.with(this).getInt("savedSholatSubuhPage", 0);
 			savedPageKey = "savedSholatSubuhPage";
-		} else if (CommonUtil.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("dz-a-i")) {
+		} else if (waktu.equalsIgnoreCase("dz-a-i")) {
 			rawJSONFile = R.raw.dzikirsesudahsholat_dz_a_i;
 			previousSavedPage = Prefs.with(this).getInt("savedSholatDzAIPage", 0);
 			savedPageKey = "savedSholatDzAIPage";
-		} else if (CommonUtil.getStringIntent(getIntent(), "waktu", "pagi").equalsIgnoreCase("maghrib")) {
+		} else if (waktu.equalsIgnoreCase("maghrib")) {
 			rawJSONFile = R.raw.dzikirsesudahsholat_maghrib;
 			previousSavedPage = Prefs.with(this).getInt("savedSholatMaghribPage", 0);
 			savedPageKey = "savedSholatMaghribPage";
@@ -829,6 +836,26 @@ public class DzikirBoard extends CanvasActivity {
 			}
 			isReadingMode = !savedInstanceState.getBoolean("isReadingMode");
 			toggleReadingMode();
+		}
+	}
+
+	private void handleIntent() {
+		Uri data = getIntent().getData();
+		if(data != null && data.getHost().contains("dzikirpagi.zaitunlabs.com")){
+			subHeaderTitle = "Dzikir di waktu Pagi";
+			waktu = "pagi";
+		} else if(data != null && data.getHost().contains("dzikirpetang.zaitunlabs.com")){
+			subHeaderTitle = "Dzikir di waktu Petang";
+			waktu = "petang";
+		} else if(data != null && data.getHost().contains("dzikirsubuh.zaitunlabs.com")){
+			subHeaderTitle = "Subuh";
+			waktu = "subuh";
+		}else if(data != null && data.getHost().contains("dzikirzhuhur.zaitunlabs.com")){
+			subHeaderTitle = "Zhuhur, Ashar, Isya";
+			waktu = "dz-a-i";
+		}else if(data != null && data.getHost().contains("dzikirmaghrib.zaitunlabs.com")){
+			subHeaderTitle = "Maghrib";
+			waktu = "maghrib";
 		}
 	}
 

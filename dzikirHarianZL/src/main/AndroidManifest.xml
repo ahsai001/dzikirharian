@@ -67,10 +67,60 @@
         
         <activity android:name=".activity.HomePage"/>
         <!-- <activity android:name=".activity.HomePage" android:configChanges="keyboardHidden|orientation"/> -->
-        <activity android:name=".activity.DzikirPagiPetang"/>
-        <activity android:name=".activity.DzikirSetelahSholat"/>
+        <activity android:name=".activity.DzikirPagiPetang"
+            android:parentActivityName=".activity.HomePage" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.HomePage" /></activity>
+        <activity android:name=".activity.DzikirSetelahSholat"
+            android:parentActivityName=".activity.HomePage" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.HomePage" /></activity>
         <activity android:name=".activity.DzikirBoard"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:parentActivityName="com.zaitunlabs.dzikirharian.activity.DzikirPagiPetang" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zaitunlabs.dzikirharian.activity.DzikirPagiPetang" />
+            <intent-filter android:label="Dzikir Pagi">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https"
+                    android:host="dzikirpagi.zaitunlabs.com" />
+            </intent-filter>
+            <intent-filter android:label="Dzikir Petang">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https"
+                    android:host="dzikirpetang.zaitunlabs.com" />
+            </intent-filter>
+            <intent-filter android:label="Dzikir Subuh">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https"
+                    android:host="dzikirsubuh.zaitunlabs.com" /></intent-filter>
+            <intent-filter android:label="Dzikir Maghrib">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https"
+                    android:host="dzikirmaghrib.zaitunlabs.com" /></intent-filter>
+            <intent-filter android:label="Dzikir Zhuhur/Ashar/Isya">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https"
+                    android:host="dzikirzhuhur.zaitunlabs.com" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".activity.FaedahDanReferensi"/>
         <activity android:name=".activity.Faedah"/>
         <activity android:name=".activity.Referensi"/>

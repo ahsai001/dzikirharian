@@ -78,11 +78,85 @@
         </activity>
         <activity android:name="com.zaitunlabs.dzikirharian.activity.HomePage" />
         <!-- <activity android:name=".activity.HomePage" android:configChanges="keyboardHidden|orientation"/> -->
-        <activity android:name="com.zaitunlabs.dzikirharian.activity.DzikirPagiPetang" />
-        <activity android:name="com.zaitunlabs.dzikirharian.activity.DzikirSetelahSholat" />
+        <activity
+            android:name="com.zaitunlabs.dzikirharian.activity.DzikirPagiPetang"
+            android:parentActivityName="com.zaitunlabs.dzikirharian.activity.HomePage" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.HomePage" />
+        </activity>
+        <activity
+            android:name="com.zaitunlabs.dzikirharian.activity.DzikirSetelahSholat"
+            android:parentActivityName="com.zaitunlabs.dzikirharian.activity.HomePage" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.HomePage" />
+        </activity>
         <activity
             android:name="com.zaitunlabs.dzikirharian.activity.DzikirBoard"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:parentActivityName="com.zaitunlabs.dzikirharian.activity.DzikirPagiPetang" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zaitunlabs.dzikirharian.activity.DzikirPagiPetang" />
+
+            <intent-filter android:label="Dzikir Pagi" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dzikirpagi.zaitunlabs.com"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter android:label="Dzikir Petang" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dzikirpetang.zaitunlabs.com"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter android:label="Dzikir Subuh" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dzikirsubuh.zaitunlabs.com"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter android:label="Dzikir Maghrib" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dzikirmaghrib.zaitunlabs.com"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter android:label="Dzikir Zhuhur/Ashar/Isya" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dzikirzhuhur.zaitunlabs.com"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
         <activity android:name="com.zaitunlabs.dzikirharian.activity.FaedahDanReferensi" />
         <activity android:name="com.zaitunlabs.dzikirharian.activity.Faedah" />
         <activity android:name="com.zaitunlabs.dzikirharian.activity.Referensi" />

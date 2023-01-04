@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/dzikirharian.iml" filepath="$PROJECT_DIR$/.idea/modules/dzikirharian.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/dzikirHarianZL/dzikirharian.dzikirHarianZL.iml" filepath="$PROJECT_DIR$/.idea/modules/dzikirHarianZL/dzikirharian.dzikirHarianZL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dzikirHarianZL/dzikirharian.dzikirHarianZL.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/dzikirHarianZL/dzikirharian.dzikirHarianZL.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dzikirHarianZL/dzikirharian.dzikirHarianZL.main.iml" filepath="$PROJECT_DIR$/.idea/modules/dzikirHarianZL/dzikirharian.dzikirHarianZL.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dzikirHarianZL/dzikirharian.dzikirHarianZL.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/dzikirHarianZL/dzikirharian.dzikirHarianZL.unitTest.iml" />
     </modules>
   </component>
 </project>
