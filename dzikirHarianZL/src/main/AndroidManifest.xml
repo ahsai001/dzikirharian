@@ -55,6 +55,7 @@
         <activity
             android:name=".activity.InitAppNew"
             android:configChanges="keyboardHidden|orientation"
+            android:exported="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,6 +82,7 @@
                 android:value=".activity.HomePage" /></activity>
         <activity android:name=".activity.DzikirBoard"
             android:launchMode="singleTask"
+            android:exported="true"
             android:parentActivityName="com.zaitunlabs.dzikirharian.activity.DzikirPagiPetang" >
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -133,9 +135,9 @@
 
         <service android:name=".services.DzikirReminderService"
             android:permission="android.permission.BIND_JOB_SERVICE"
-            android:exported="false"/>
+            android:exported="true"/>
 
-        <receiver android:name=".receivers.ManageDzikirReminderReceiver">
+        <receiver android:name=".receivers.ManageDzikirReminderReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
@@ -144,7 +146,8 @@
 
 
         <service
-            android:name=".services.MyFirebaseMessagingService">
+            android:name=".services.MyFirebaseMessagingService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
