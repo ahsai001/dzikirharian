@@ -1,0 +1,705 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.zaitunlabs.dzikirharian"
+4    android:versionCode="29"
+5    android:versionName="1.20.29.54" >
+6
+7    <uses-sdk
+7-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:6:5-156
+8        android:minSdkVersion="16"
+8-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:6:5-156
+9        android:targetSdkVersion="33" />
+9-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:6:5-156
+10
+11    <supports-screens
+11-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:8:5-13:39
+12        android:anyDensity="true"
+12-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:9:9-34
+13        android:largeScreens="true"
+13-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:10:9-36
+14        android:normalScreens="true"
+14-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:11:9-37
+15        android:resizeable="true"
+15-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:12:9-34
+16        android:smallScreens="true"
+16-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:13:9-36
+17        android:xlargeScreens="true" />
+17-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:27:9-37
+18
+19    <uses-permission android:name="android.permission.INTERNET" />
+19-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:15:5-67
+19-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:15:22-64
+20    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+20-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:16:5-79
+20-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:16:22-76
+21    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+21-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:17:5-81
+21-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:17:22-78
+22    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+22-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:18:5-79
+22-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:18:22-76
+23    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+23-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:20:5-81
+23-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:20:22-78
+24    <uses-permission android:name="android.permission.WAKE_LOCK" />
+24-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:22:5-68
+24-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:22:22-65
+25    <uses-permission android:name="android.permission.VIBRATE" />
+25-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:24:5-66
+25-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:24:22-63
+26    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+26-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:26:5-75
+26-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:26:22-72
+27    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+27-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:27:5-80
+27-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:27:22-77
+28    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+28-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:28:5-80
+28-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:28:22-78
+29
+30    <!-- Required by older versions of Google Play services to create IID tokens -->
+31    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+31-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:26:5-82
+31-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:26:22-79
+32    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+32-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:26:5-110
+32-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:26:22-107
+33
+34    <uses-feature
+34-->[com.google.android.gms:play-services-maps:17.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/4a4da932815076f41ebf4261ad1ad348/jetified-play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+35        android:glEsVersion="0x00020000"
+35-->[com.google.android.gms:play-services-maps:17.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/4a4da932815076f41ebf4261ad1ad348/jetified-play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+36        android:required="true" />
+36-->[com.google.android.gms:play-services-maps:17.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/4a4da932815076f41ebf4261ad1ad348/jetified-play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+37    <!--
+38    belum dipake permission ini
+39	<uses-permission android:name="android.permission.BROADCAST_STICKY" />
+40	<uses-permission android:name="android.permission.CAMERA" />
+41	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+42	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+43	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+44	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+45	<uses-permission android:name="android.permission.READ_CONTACTS" />
+46	<uses-permission android:name="android.permission.WRITE_CONTACTS" />
+47	 <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+48	 <uses-permission android:name="android.permission.GET_TASKS" />
+49	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+50    -->
+51    <application
+51-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:45:5-154:19
+52        android:name="com.zaitunlabs.zaituncore.ZaitunApp"
+52-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:46:9-59
+53        android:allowBackup="true"
+53-->[com.ernestoyaquello.stepperform:vertical-stepper-form:1.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/0b24ea38ae2d1af8db1dfe0b20505a26/jetified-vertical-stepper-form-1.0.0/AndroidManifest.xml:12:9-35
+54        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+54-->[androidx.core:core:1.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b8a42566902122ba073398481a046a17/core-1.3.1/AndroidManifest.xml:24:18-86
+55        android:icon="@drawable/icon_apps"
+55-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:47:9-43
+56        android:label="@string/app_name"
+56-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:49:9-41
+57        android:supportsRtl="true"
+57-->[com.ernestoyaquello.stepperform:vertical-stepper-form:1.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/0b24ea38ae2d1af8db1dfe0b20505a26/jetified-vertical-stepper-form-1.0.0/AndroidManifest.xml:14:9-35
+58        android:theme="@style/AppTheme" >
+58-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:48:9-40
+59        <meta-data
+59-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:51:9-53:69
+60            android:name="com.google.android.gms.version"
+60-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:52:13-58
+61            android:value="@integer/google_play_services_version" />
+61-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:53:13-66
+62
+63        <activity
+63-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:55:9-66:20
+64            android:name="com.zaitunlabs.dzikirharian.activity.InitAppNew"
+64-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:56:13-48
+65            android:configChanges="keyboardHidden|orientation"
+65-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:57:13-63
+66            android:label="@string/app_name" >
+66-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:58:13-45
+67            <intent-filter>
+67-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:59:13-62:29
+68                <action android:name="android.intent.action.MAIN" />
+68-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:60:17-69
+68-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:60:25-66
+69
+70                <category android:name="android.intent.category.LAUNCHER" />
+70-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:61:17-77
+70-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:61:27-74
+71            </intent-filter>
+72            <intent-filter>
+72-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:63:13-65:29
+73                <action android:name="android.intent.action.VIEW" />
+73-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:17-68
+73-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:25-66
+74            </intent-filter>
+75        </activity>
+76        <activity android:name="com.zaitunlabs.dzikirharian.activity.HomePage" />
+76-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:68:9-54
+76-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:68:19-52
+77        <!-- <activity android:name=".activity.HomePage" android:configChanges="keyboardHidden|orientation"/> -->
+78        <activity
+78-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:70:9-75:65
+79            android:name="com.zaitunlabs.dzikirharian.activity.DzikirPagiPetang"
+79-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:70:19-60
+80            android:parentActivityName="com.zaitunlabs.dzikirharian.activity.HomePage" >
+80-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:71:13-60
+81
+82            <!-- Parent activity meta-data to support 4.0 and lower -->
+83            <meta-data
+83-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:73:13-75:54
+84                android:name="android.support.PARENT_ACTIVITY"
+84-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:74:17-63
+85                android:value=".activity.HomePage" />
+85-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:75:17-51
+86        </activity>
+87        <activity
+87-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:76:9-81:65
+88            android:name="com.zaitunlabs.dzikirharian.activity.DzikirSetelahSholat"
+88-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:76:19-63
+89            android:parentActivityName="com.zaitunlabs.dzikirharian.activity.HomePage" >
+89-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:77:13-60
+90
+91            <!-- Parent activity meta-data to support 4.0 and lower -->
+92            <meta-data
+92-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:73:13-75:54
+93                android:name="android.support.PARENT_ACTIVITY"
+93-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:74:17-63
+94                android:value=".activity.HomePage" />
+94-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:75:17-51
+95        </activity>
+96        <activity
+96-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:82:9-123:20
+97            android:name="com.zaitunlabs.dzikirharian.activity.DzikirBoard"
+97-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:82:19-55
+98            android:launchMode="singleTask"
+98-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:83:13-44
+99            android:parentActivityName="com.zaitunlabs.dzikirharian.activity.DzikirPagiPetang" >
+99-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:84:13-95
+100
+101            <!-- Parent activity meta-data to support 4.0 and lower -->
+102            <meta-data
+102-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:73:13-75:54
+103                android:name="android.support.PARENT_ACTIVITY"
+103-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:74:17-63
+104                android:value="com.zaitunlabs.dzikirharian.activity.DzikirPagiPetang" />
+104-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:75:17-51
+105
+106            <intent-filter android:label="Dzikir Pagi" >
+106-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:89:13-95:29
+106-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:89:28-55
+107                <action android:name="android.intent.action.VIEW" />
+107-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:17-68
+107-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:25-66
+108
+109                <category android:name="android.intent.category.DEFAULT" />
+109-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:91:17-76
+109-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:91:27-73
+110                <category android:name="android.intent.category.BROWSABLE" />
+110-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:92:17-78
+110-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:92:27-75
+111
+112                <data
+112-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:93:17-94:64
+113                    android:host="dzikirpagi.zaitunlabs.com"
+113-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:94:21-61
+114                    android:scheme="https" />
+114-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:93:23-45
+115            </intent-filter>
+116            <intent-filter android:label="Dzikir Petang" >
+116-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:96:13-102:29
+116-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:96:28-57
+117                <action android:name="android.intent.action.VIEW" />
+117-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:17-68
+117-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:25-66
+118
+119                <category android:name="android.intent.category.DEFAULT" />
+119-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:91:17-76
+119-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:91:27-73
+120                <category android:name="android.intent.category.BROWSABLE" />
+120-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:92:17-78
+120-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:92:27-75
+121
+122                <data
+122-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:93:17-94:64
+123                    android:host="dzikirpetang.zaitunlabs.com"
+123-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:94:21-61
+124                    android:scheme="https" />
+124-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:93:23-45
+125            </intent-filter>
+126            <intent-filter android:label="Dzikir Subuh" >
+126-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:103:13-108:81
+126-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:103:28-56
+127                <action android:name="android.intent.action.VIEW" />
+127-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:17-68
+127-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:25-66
+128
+129                <category android:name="android.intent.category.DEFAULT" />
+129-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:91:17-76
+129-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:91:27-73
+130                <category android:name="android.intent.category.BROWSABLE" />
+130-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:92:17-78
+130-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:92:27-75
+131
+132                <data
+132-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:93:17-94:64
+133                    android:host="dzikirsubuh.zaitunlabs.com"
+133-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:94:21-61
+134                    android:scheme="https" />
+134-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:93:23-45
+135            </intent-filter>
+136            <intent-filter android:label="Dzikir Maghrib" >
+136-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:109:13-114:83
+136-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:109:28-58
+137                <action android:name="android.intent.action.VIEW" />
+137-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:17-68
+137-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:25-66
+138
+139                <category android:name="android.intent.category.DEFAULT" />
+139-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:91:17-76
+139-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:91:27-73
+140                <category android:name="android.intent.category.BROWSABLE" />
+140-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:92:17-78
+140-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:92:27-75
+141
+142                <data
+142-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:93:17-94:64
+143                    android:host="dzikirmaghrib.zaitunlabs.com"
+143-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:94:21-61
+144                    android:scheme="https" />
+144-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:93:23-45
+145            </intent-filter>
+146            <intent-filter android:label="Dzikir Zhuhur/Ashar/Isya" >
+146-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:115:13-121:29
+146-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:115:28-68
+147                <action android:name="android.intent.action.VIEW" />
+147-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:17-68
+147-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:64:25-66
+148
+149                <category android:name="android.intent.category.DEFAULT" />
+149-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:91:17-76
+149-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:91:27-73
+150                <category android:name="android.intent.category.BROWSABLE" />
+150-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:92:17-78
+150-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:92:27-75
+151
+152                <data
+152-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:93:17-94:64
+153                    android:host="dzikirzhuhur.zaitunlabs.com"
+153-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:94:21-61
+154                    android:scheme="https" />
+154-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:93:23-45
+155            </intent-filter>
+156        </activity>
+157        <activity android:name="com.zaitunlabs.dzikirharian.activity.FaedahDanReferensi" />
+157-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:124:9-64
+157-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:124:19-62
+158        <activity android:name="com.zaitunlabs.dzikirharian.activity.Faedah" />
+158-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:125:9-52
+158-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:125:19-50
+159        <activity android:name="com.zaitunlabs.dzikirharian.activity.Referensi" />
+159-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:126:9-55
+159-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:126:19-53
+160        <activity android:name="com.zaitunlabs.dzikirharian.activity.Mukadimah" />
+160-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:127:9-55
+160-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:127:19-53
+161        <activity android:name="com.zaitunlabs.dzikirharian.activity.NewPage" >
+161-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:128:9-131:20
+161-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:128:19-51
+162        </activity>
+163
+164        <service
+164-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:134:9-136:39
+165            android:name="com.zaitunlabs.dzikirharian.services.DzikirReminderService"
+165-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:134:18-64
+166            android:exported="false"
+166-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:136:13-37
+167            android:permission="android.permission.BIND_JOB_SERVICE" />
+167-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:135:13-69
+168
+169        <receiver android:name="com.zaitunlabs.dzikirharian.receivers.ManageDzikirReminderReceiver" >
+169-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:138:9-142:20
+169-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:138:19-73
+170            <intent-filter>
+170-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:139:13-141:29
+171                <action android:name="android.intent.action.BOOT_COMPLETED" />
+171-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:140:17-78
+171-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:140:25-76
+172            </intent-filter>
+173        </receiver>
+174        <receiver android:name="com.zaitunlabs.dzikirharian.receivers.DzikirReminderReceiver" />
+174-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:143:9-69
+174-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:143:19-67
+175
+176        <service android:name="com.zaitunlabs.dzikirharian.services.MyFirebaseMessagingService" >
+176-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:146:9-151:19
+176-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:147:13-64
+177            <intent-filter>
+177-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:148:13-150:29
+178                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+178-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:149:17-77
+178-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:149:25-75
+179            </intent-filter>
+180        </service>
+181
+182        <activity
+182-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:30:9-36:57
+183            android:name="com.zaitunlabs.zlcore.activities.InfoPopup"
+183-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:31:13-70
+184            android:excludeFromRecents="true"
+184-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:32:13-46
+185            android:label="@string/zlcore_title_activity_info_popup"
+185-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:33:13-69
+186            android:launchMode="singleTask"
+186-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:34:13-44
+187            android:noHistory="true"
+187-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:35:13-37
+188            android:theme="@style/AppTheme.InfoPopup" />
+188-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:36:13-54
+189        <activity
+189-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:37:9-43:61
+190            android:name="com.zaitunlabs.zlcore.activities.ReminderPopup"
+190-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:38:13-74
+191            android:excludeFromRecents="true"
+191-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:39:13-46
+192            android:label="@string/zlcore_title_activity_reminder_popup"
+192-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:40:13-73
+193            android:launchMode="standard"
+193-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:41:13-42
+194            android:noHistory="true"
+194-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:42:13-37
+195            android:theme="@style/AppTheme.ReminderPopup" />
+195-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:43:13-58
+196        <activity
+196-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:44:9-46:59
+197            android:name="com.zaitunlabs.zlcore.modules.version_history.VersionChangeHistoryCanvas"
+197-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:45:13-100
+198            android:theme="@style/AppTheme.NoActionBar" />
+198-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:46:13-56
+199        <activity
+199-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:47:9-49:59
+200            android:name="com.zaitunlabs.zlcore.modules.about.AboutUs"
+200-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:48:13-71
+201            android:theme="@style/AppTheme.NoActionBar" />
+201-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:49:13-56
+202        <activity
+202-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:50:9-52:59
+203            android:name="com.zaitunlabs.zlcore.core.WebViewActivity"
+203-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:51:13-70
+204            android:theme="@style/AppTheme.NoActionBar" />
+204-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:52:13-56
+205
+206        <service
+206-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:54:9-57:72
+207            android:name="com.zaitunlabs.zlcore.services.FCMIntentService"
+207-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:55:13-75
+208            android:exported="false"
+208-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:56:13-37
+209            android:permission="android.permission.BIND_JOB_SERVICE" />
+209-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:57:13-69
+210        <service
+210-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:58:9-61:72
+211            android:name="com.zaitunlabs.zlcore.services.FCMLoginIntentService"
+211-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:59:13-80
+212            android:exported="false"
+212-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:60:13-37
+213            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- for application backsound -->
+213-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:61:13-69
+214        <service android:name="com.zaitunlabs.zlcore.utils.audio.BackSoundService" />
+214-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:64:9-86
+214-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:64:18-83
+215        <service android:name="com.zaitunlabs.zlcore.utils.audio.AudioService" />
+215-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:65:9-82
+215-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:65:18-79
+216
+217        <receiver android:name="com.zaitunlabs.zlcore.utils.audio.StopPlayerReceiver" /> <!-- modules sholat dan shaum -->
+217-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:67:9-89
+217-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:67:19-86
+218        <service
+218-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:70:9-73:72
+219            android:name="com.zaitunlabs.zlcore.modules.shaum_sholat.ShaumSholatReminderService"
+219-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:71:13-97
+220            android:exported="false"
+220-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:72:13-37
+221            android:permission="android.permission.BIND_JOB_SERVICE" />
+221-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:73:13-69
+222
+223        <receiver
+223-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:75:9-85:20
+224            android:name="com.zaitunlabs.zlcore.modules.shaum_sholat.ManageShaumSholatReminderReceiver"
+224-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:76:13-104
+225            android:directBootAware="true" >
+225-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:77:13-43
+226            <intent-filter>
+226-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:79:13-84:29
+227                <action android:name="android.intent.action.BOOT_COMPLETED" />
+227-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:140:17-78
+227-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:140:25-76
+228                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+228-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:81:17-86
+228-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:81:25-83
+229                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+229-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:82:17-82
+229-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:82:25-79
+230                <action android:name="android.intent.action.REBOOT" />
+230-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:83:17-71
+230-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:83:25-68
+231            </intent-filter>
+232        </receiver>
+233        <receiver android:name="com.zaitunlabs.zlcore.modules.shaum_sholat.SholatReminderReceiver" />
+233-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:86:9-102
+233-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:86:19-99
+234        <receiver android:name="com.zaitunlabs.zlcore.modules.shaum_sholat.ShaumReminderReceiver" />
+234-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:87:9-101
+234-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:87:19-98
+235
+236        <service
+236-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:89:9-92:72
+237            android:name="com.zaitunlabs.zlcore.services.DataIntentService"
+237-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:90:13-76
+238            android:exported="false"
+238-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:91:13-37
+239            android:permission="android.permission.BIND_JOB_SERVICE" />
+239-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:92:13-69
+240
+241        <activity
+241-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:94:9-97:59
+242            android:name="com.zaitunlabs.zlcore.activities.MessageListActivity"
+242-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:95:13-80
+243            android:label="@string/zlcore_module_message_list_title"
+243-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:96:13-69
+244            android:theme="@style/AppTheme.NoActionBar" />
+244-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:97:13-56
+245        <activity
+245-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:98:9-101:59
+246            android:name="com.zaitunlabs.zlcore.activities.AppListActivity"
+246-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:99:13-76
+247            android:label="@string/zlcore_title_activity_app_list"
+247-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:100:13-67
+248            android:theme="@style/AppTheme.NoActionBar" />
+248-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:101:13-56
+249        <activity
+249-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:102:9-105:59
+250            android:name="com.zaitunlabs.zlcore.activities.StoreActivity"
+250-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:103:13-74
+251            android:label="@string/zlcore_title_activity_store"
+251-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:104:13-64
+252            android:theme="@style/AppTheme.NoActionBar" />
+252-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:105:13-56
+253        <activity
+253-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:106:9-109:59
+254            android:name="com.zaitunlabs.zlcore.modules.version_history.VersionChangeHistoryActivity"
+254-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:107:13-102
+255            android:label="@string/zlcore_title_activity_version_change_history"
+255-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:108:13-81
+256            android:theme="@style/AppTheme.NoActionBar" />
+256-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:109:13-56
+257        <activity
+257-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:110:9-113:59
+258            android:name="com.zaitunlabs.zlcore.activities.BookmarkListActivity"
+258-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:111:13-81
+259            android:label="@string/zlcore_title_activity_bookmark_list"
+259-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:112:13-72
+260            android:theme="@style/AppTheme.NoActionBar" />
+260-->[com.github.ahsai001:zlcore:1.10.84.190] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b7234ca3e71cef298e4faf17142b2d34/jetified-zlcore-1.10.84.190/AndroidManifest.xml:113:13-56
+261        <!--
+262             FirebaseMessagingService performs security checks at runtime,
+263             but set to not exported to explicitly avoid allowing another app to call it.
+264        -->
+265        <service
+265-->[com.google.firebase:firebase-messaging:20.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/dd33af8b488ff8f7d951a15b3d6cd0e0/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:28:9-35:19
+266            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+266-->[com.google.firebase:firebase-messaging:20.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/dd33af8b488ff8f7d951a15b3d6cd0e0/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:29:13-82
+267            android:directBootAware="true"
+267-->[com.google.firebase:firebase-messaging:20.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/dd33af8b488ff8f7d951a15b3d6cd0e0/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:30:13-43
+268            android:exported="false" >
+268-->[com.google.firebase:firebase-messaging:20.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/dd33af8b488ff8f7d951a15b3d6cd0e0/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:31:13-37
+269            <intent-filter android:priority="-500" >
+269-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:148:13-150:29
+270                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+270-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:149:17-77
+270-->/Users/ahmad/Documents/git/android/dzikirharian/dzikirHarianZL/src/main/AndroidManifest.xml:149:25-75
+271            </intent-filter>
+272        </service>
+273        <service
+273-->[com.google.firebase:firebase-messaging:20.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/dd33af8b488ff8f7d951a15b3d6cd0e0/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:36:9-42:19
+274            android:name="com.google.firebase.components.ComponentDiscoveryService"
+274-->[com.google.firebase:firebase-messaging:20.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/dd33af8b488ff8f7d951a15b3d6cd0e0/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:37:13-84
+275            android:directBootAware="true"
+275-->[com.google.firebase:firebase-common:19.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b21d9d664d0576b41a2ca2c908c34c21/jetified-firebase-common-19.3.1/AndroidManifest.xml:35:13-43
+276            android:exported="false" >
+276-->[com.google.firebase:firebase-messaging:20.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/dd33af8b488ff8f7d951a15b3d6cd0e0/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:38:13-37
+277            <meta-data
+277-->[com.google.firebase:firebase-messaging:20.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/dd33af8b488ff8f7d951a15b3d6cd0e0/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:39:13-41:85
+278                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+278-->[com.google.firebase:firebase-messaging:20.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/dd33af8b488ff8f7d951a15b3d6cd0e0/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:40:17-119
+279                android:value="com.google.firebase.components.ComponentRegistrar" />
+279-->[com.google.firebase:firebase-messaging:20.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/dd33af8b488ff8f7d951a15b3d6cd0e0/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:41:17-82
+280            <meta-data
+280-->[com.google.firebase:firebase-crashlytics:17.2.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/be41cb5c4de42b4d225cde01cb835ca2/jetified-firebase-crashlytics-17.2.1/AndroidManifest.xml:16:13-18:85
+281                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
+281-->[com.google.firebase:firebase-crashlytics:17.2.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/be41cb5c4de42b4d225cde01cb835ca2/jetified-firebase-crashlytics-17.2.1/AndroidManifest.xml:17:17-115
+282                android:value="com.google.firebase.components.ComponentRegistrar" />
+282-->[com.google.firebase:firebase-crashlytics:17.2.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/be41cb5c4de42b4d225cde01cb835ca2/jetified-firebase-crashlytics-17.2.1/AndroidManifest.xml:18:17-82
+283            <meta-data
+283-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:32:13-34:85
+284                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+284-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:33:17-96
+285                android:value="com.google.firebase.components.ComponentRegistrar" />
+285-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:34:17-82
+286            <meta-data
+286-->[com.google.android.gms:play-services-measurement-api:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/eed99e10d77660b8fc433784447953df/jetified-play-services-measurement-api-17.5.0/AndroidManifest.xml:30:13-32:85
+287                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+287-->[com.google.android.gms:play-services-measurement-api:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/eed99e10d77660b8fc433784447953df/jetified-play-services-measurement-api-17.5.0/AndroidManifest.xml:31:17-139
+288                android:value="com.google.firebase.components.ComponentRegistrar" />
+288-->[com.google.android.gms:play-services-measurement-api:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/eed99e10d77660b8fc433784447953df/jetified-play-services-measurement-api-17.5.0/AndroidManifest.xml:32:17-82
+289            <meta-data
+289-->[com.google.firebase:firebase-installations:16.3.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/21446d3168dc3f25c79d4d65a1e3e48e/jetified-firebase-installations-16.3.3/AndroidManifest.xml:17:13-19:85
+290                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+290-->[com.google.firebase:firebase-installations:16.3.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/21446d3168dc3f25c79d4d65a1e3e48e/jetified-firebase-installations-16.3.3/AndroidManifest.xml:18:17-127
+291                android:value="com.google.firebase.components.ComponentRegistrar" />
+291-->[com.google.firebase:firebase-installations:16.3.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/21446d3168dc3f25c79d4d65a1e3e48e/jetified-firebase-installations-16.3.3/AndroidManifest.xml:19:17-82
+292            <meta-data
+292-->[com.google.firebase:firebase-datatransport:17.0.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/ed418626e742f1a5151f0d03eae3504b/jetified-firebase-datatransport-17.0.3/AndroidManifest.xml:28:13-30:85
+293                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+293-->[com.google.firebase:firebase-datatransport:17.0.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/ed418626e742f1a5151f0d03eae3504b/jetified-firebase-datatransport-17.0.3/AndroidManifest.xml:29:17-115
+294                android:value="com.google.firebase.components.ComponentRegistrar" />
+294-->[com.google.firebase:firebase-datatransport:17.0.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/ed418626e742f1a5151f0d03eae3504b/jetified-firebase-datatransport-17.0.3/AndroidManifest.xml:30:17-82
+295        </service>
+296
+297        <provider
+297-->[com.squareup.picasso:picasso:2.71828] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/f9e71466d4f47d7c28ebae879309dfcf/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
+298            android:name="com.squareup.picasso.PicassoProvider"
+298-->[com.squareup.picasso:picasso:2.71828] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/f9e71466d4f47d7c28ebae879309dfcf/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
+299            android:authorities="com.zaitunlabs.dzikirharian.com.squareup.picasso"
+299-->[com.squareup.picasso:picasso:2.71828] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/f9e71466d4f47d7c28ebae879309dfcf/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
+300            android:exported="false" />
+300-->[com.squareup.picasso:picasso:2.71828] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/f9e71466d4f47d7c28ebae879309dfcf/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
+301
+302        <activity
+302-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:40:9-241
+303            android:name="org.acra.dialog.CrashReportDialog"
+303-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:40:123-171
+304            android:excludeFromRecents="true"
+304-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:40:19-52
+305            android:finishOnTaskLaunch="true"
+305-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:40:53-86
+306            android:launchMode="singleInstance"
+306-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:40:87-122
+307            android:process=":acra"
+307-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:40:172-195
+308            android:theme="@android:style/Theme.Dialog" />
+308-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:40:196-239
+309
+310        <service
+310-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:42:9-113
+311            android:name="org.acra.sender.SenderService"
+311-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:42:43-87
+312            android:exported="false"
+312-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:42:18-42
+313            android:process=":acra" />
+313-->[ch.acra:acra:4.9.2] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f7a3c0a4c19de6194377600ffd7d332/jetified-acra-4.9.2/AndroidManifest.xml:42:88-111
+314
+315        <receiver
+315-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:37:9-44:20
+316            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+316-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:38:13-78
+317            android:exported="true"
+317-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:39:13-36
+318            android:permission="com.google.android.c2dm.permission.SEND" >
+318-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:40:13-73
+319            <intent-filter>
+319-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:41:13-43:29
+320                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+320-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:42:17-81
+320-->[com.google.firebase:firebase-iid:20.2.3] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1f47ac39b1bd7f05171a3d9f94d24db1/jetified-firebase-iid-20.2.3/AndroidManifest.xml:42:25-78
+321            </intent-filter>
+322        </receiver>
+323
+324        <provider
+324-->[com.google.firebase:firebase-common:19.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b21d9d664d0576b41a2ca2c908c34c21/jetified-firebase-common-19.3.1/AndroidManifest.xml:26:9-31:39
+325            android:name="com.google.firebase.provider.FirebaseInitProvider"
+325-->[com.google.firebase:firebase-common:19.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b21d9d664d0576b41a2ca2c908c34c21/jetified-firebase-common-19.3.1/AndroidManifest.xml:27:13-77
+326            android:authorities="com.zaitunlabs.dzikirharian.firebaseinitprovider"
+326-->[com.google.firebase:firebase-common:19.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b21d9d664d0576b41a2ca2c908c34c21/jetified-firebase-common-19.3.1/AndroidManifest.xml:28:13-72
+327            android:directBootAware="true"
+327-->[com.google.firebase:firebase-common:19.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b21d9d664d0576b41a2ca2c908c34c21/jetified-firebase-common-19.3.1/AndroidManifest.xml:29:13-43
+328            android:exported="false"
+328-->[com.google.firebase:firebase-common:19.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b21d9d664d0576b41a2ca2c908c34c21/jetified-firebase-common-19.3.1/AndroidManifest.xml:30:13-37
+329            android:initOrder="100" />
+329-->[com.google.firebase:firebase-common:19.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/b21d9d664d0576b41a2ca2c908c34c21/jetified-firebase-common-19.3.1/AndroidManifest.xml:31:13-36
+330
+331        <service
+331-->[com.google.android.datatransport:transport-backend-cct:2.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1faea9d3862531e178e2c91a7c12a076/jetified-transport-backend-cct-2.3.1/AndroidManifest.xml:29:9-35:19
+332            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+332-->[com.google.android.datatransport:transport-backend-cct:2.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1faea9d3862531e178e2c91a7c12a076/jetified-transport-backend-cct-2.3.1/AndroidManifest.xml:30:13-103
+333            android:exported="false" >
+333-->[com.google.android.datatransport:transport-backend-cct:2.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1faea9d3862531e178e2c91a7c12a076/jetified-transport-backend-cct-2.3.1/AndroidManifest.xml:31:13-37
+334            <meta-data
+334-->[com.google.android.datatransport:transport-backend-cct:2.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1faea9d3862531e178e2c91a7c12a076/jetified-transport-backend-cct-2.3.1/AndroidManifest.xml:32:13-34:39
+335                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+335-->[com.google.android.datatransport:transport-backend-cct:2.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1faea9d3862531e178e2c91a7c12a076/jetified-transport-backend-cct-2.3.1/AndroidManifest.xml:33:17-94
+336                android:value="cct" />
+336-->[com.google.android.datatransport:transport-backend-cct:2.3.1] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/1faea9d3862531e178e2c91a7c12a076/jetified-transport-backend-cct-2.3.1/AndroidManifest.xml:34:17-36
+337        </service>
+338        <service
+338-->[com.google.android.datatransport:transport-runtime:2.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/e21284c629ef0756ee9b2c47d90b945c/jetified-transport-runtime-2.2.4/AndroidManifest.xml:26:9-30:19
+339            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+339-->[com.google.android.datatransport:transport-runtime:2.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/e21284c629ef0756ee9b2c47d90b945c/jetified-transport-runtime-2.2.4/AndroidManifest.xml:27:13-117
+340            android:exported="false"
+340-->[com.google.android.datatransport:transport-runtime:2.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/e21284c629ef0756ee9b2c47d90b945c/jetified-transport-runtime-2.2.4/AndroidManifest.xml:28:13-37
+341            android:permission="android.permission.BIND_JOB_SERVICE" >
+341-->[com.google.android.datatransport:transport-runtime:2.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/e21284c629ef0756ee9b2c47d90b945c/jetified-transport-runtime-2.2.4/AndroidManifest.xml:29:13-69
+342        </service>
+343
+344        <receiver
+344-->[com.google.android.datatransport:transport-runtime:2.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/e21284c629ef0756ee9b2c47d90b945c/jetified-transport-runtime-2.2.4/AndroidManifest.xml:32:9-34:40
+345            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+345-->[com.google.android.datatransport:transport-runtime:2.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/e21284c629ef0756ee9b2c47d90b945c/jetified-transport-runtime-2.2.4/AndroidManifest.xml:33:13-132
+346            android:exported="false" />
+346-->[com.google.android.datatransport:transport-runtime:2.2.4] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/e21284c629ef0756ee9b2c47d90b945c/jetified-transport-runtime-2.2.4/AndroidManifest.xml:34:13-37
+347        <receiver
+347-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:29:9-33:20
+348            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+348-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:30:13-85
+349            android:enabled="true"
+349-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:31:13-35
+350            android:exported="false" >
+350-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:32:13-37
+351        </receiver>
+352
+353        <service
+353-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:35:9-38:40
+354            android:name="com.google.android.gms.measurement.AppMeasurementService"
+354-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:36:13-84
+355            android:enabled="true"
+355-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:37:13-35
+356            android:exported="false" />
+356-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:38:13-37
+357        <service
+357-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:39:9-43:72
+358            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+358-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:40:13-87
+359            android:enabled="true"
+359-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:41:13-35
+360            android:exported="false"
+360-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:42:13-37
+361            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- Needs to be explicitly declared on P+ -->
+361-->[com.google.android.gms:play-services-measurement:17.5.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/405ac19fd7ddef0d4a590bace6f1f458/jetified-play-services-measurement-17.5.0/AndroidManifest.xml:43:13-69
+362        <uses-library
+362-->[com.google.android.gms:play-services-maps:17.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/4a4da932815076f41ebf4261ad1ad348/jetified-play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
+363            android:name="org.apache.http.legacy"
+363-->[com.google.android.gms:play-services-maps:17.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/4a4da932815076f41ebf4261ad1ad348/jetified-play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
+364            android:required="false" />
+364-->[com.google.android.gms:play-services-maps:17.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/4a4da932815076f41ebf4261ad1ad348/jetified-play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
+365
+366        <activity
+366-->[com.google.android.gms:play-services-base:17.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/8f40dbba3d8aa4e2201f168af61dec82/jetified-play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
+367            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+367-->[com.google.android.gms:play-services-base:17.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/8f40dbba3d8aa4e2201f168af61dec82/jetified-play-services-base-17.0.0/AndroidManifest.xml:24:13-79
+368            android:exported="false"
+368-->[com.google.android.gms:play-services-base:17.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/8f40dbba3d8aa4e2201f168af61dec82/jetified-play-services-base-17.0.0/AndroidManifest.xml:25:13-37
+369            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+369-->[com.google.android.gms:play-services-base:17.0.0] /Users/ahmad/.gradle/caches/transforms-2/files-2.1/8f40dbba3d8aa4e2201f168af61dec82/jetified-play-services-base-17.0.0/AndroidManifest.xml:26:13-72
+370    </application>
+371
+372</manifest>
