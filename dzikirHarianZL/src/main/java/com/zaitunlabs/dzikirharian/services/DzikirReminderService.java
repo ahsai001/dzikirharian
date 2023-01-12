@@ -171,7 +171,7 @@ public class DzikirReminderService extends JobIntentService {
                 }
             });
             helper.init();
-            helper.start();
+            helper.getLastLocation();
         }else{
             //WakefulBroadcastReceiver.completeWakefulIntent(intent);
         }
