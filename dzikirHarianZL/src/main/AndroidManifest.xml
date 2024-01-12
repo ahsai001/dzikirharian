@@ -41,7 +41,13 @@
 	 <uses-permission android:name="android.permission.GET_TASKS" />
 	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
     -->
-    
+
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <queries>
+        <package android:name="com.zaitunlabs.dzikirharian" />
+    </queries>
+
+
     <application
         android:name="com.zaitunlabs.zaituncore.ZaitunApp"
         android:icon="@drawable/icon_apps"
@@ -51,7 +57,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-         
+
         <activity
             android:name=".activity.InitAppNew"
             android:configChanges="keyboardHidden|orientation"
@@ -60,12 +66,13 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        
+
         <activity android:name=".activity.HomePage"/>
         <!-- <activity android:name=".activity.HomePage" android:configChanges="keyboardHidden|orientation"/> -->
         <activity android:name=".activity.DzikirPagiPetang"
@@ -93,33 +100,35 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https"
-                    android:host="dzikirpagi.zaitunlabs.com" />
+                    android:host="ahsailabs.com" android:path="/dzikirpagi"/>
             </intent-filter>
             <intent-filter android:label="Dzikir Petang">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https"
-                    android:host="dzikirpetang.zaitunlabs.com" />
+                    android:host="ahsailabs.com" android:path="/dzikirpetang"/>
             </intent-filter>
             <intent-filter android:label="Dzikir Subuh">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https"
-                    android:host="dzikirsubuh.zaitunlabs.com" /></intent-filter>
+                    android:host="ahsailabs.com" android:path="/dzikirsubuh"/>
+            </intent-filter>
             <intent-filter android:label="Dzikir Maghrib">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https"
-                    android:host="dzikirmaghrib.zaitunlabs.com" /></intent-filter>
+                    android:host="ahsailabs.com" android:path="/dzikirmaghrib"/>
+            </intent-filter>
             <intent-filter android:label="Dzikir Zhuhur/Ashar/Isya">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https"
-                    android:host="dzikirzhuhur.zaitunlabs.com" />
+                    android:host="ahsailabs.com" android:path="/dzikirzhuhur"/>
             </intent-filter>
 
         </activity>

@@ -290,11 +290,11 @@ public class DzikirBoard extends CanvasActivity {
 
 		final ASImageButtonView nextView = new ASImageButtonView(this);
 		nextView.setImageDrawable(R.drawable.arrow_right);
-		navView.addViewWithFrame(nextView, 90, 20, 10, SAME_AS_OTHER_SIDE);
+		navView.addViewWithFrame(nextView, 80, 10, 20, SAME_AS_OTHER_SIDE);
 
 		final ASImageButtonView doneView = new ASImageButtonView(this);
 		doneView.setImageDrawable(R.drawable.ic_baseline_done_24);
-		navView.addViewWithFrame(doneView, 75, 20, 10, SAME_AS_OTHER_SIDE);
+		navView.addViewWithFrame(doneView, 65, 20, 10, SAME_AS_OTHER_SIDE);
 		doneView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -305,7 +305,7 @@ public class DzikirBoard extends CanvasActivity {
 
 		final ASImageButtonView prevView = new ASImageButtonView(this);
 		prevView.setImageDrawable(R.drawable.arrow_left);
-		navView.addViewWithFrame(prevView, 0, 20, 10, SAME_AS_OTHER_SIDE);
+		navView.addViewWithFrame(prevView, 0, 10, 20, SAME_AS_OTHER_SIDE);
 
 
 		slidingPageSelectorCanvas.getShiftPositionHandler().setDimensionStateListener(new DimensionStateListener() {
@@ -321,7 +321,7 @@ public class DzikirBoard extends CanvasActivity {
 					//close
 					navHandler.showNavigationViewWithState();
 					pageContent.removeAllViews();
-					pageView.setText("Halaman " + (navHandler.getIndex() + 1) + " dari " + navHandler.getCount());
+					pageView.setText((navHandler.getIndex() + 1) + "/" + navHandler.getCount());
 					doneView.setVisibility(View.VISIBLE);
 				}else if(currentIndexState == 1){
 					//open
@@ -417,7 +417,7 @@ public class DzikirBoard extends CanvasActivity {
 
 				slidingLayer.closeLayer(true);
 
-				pageView.setText("Halaman " + (index + 1) + " dari " + counts);
+				pageView.setText((index + 1) + "/" + counts);
 
 				// set new bacaan
 				String bacaanString = bacaanList.get(index);
@@ -841,19 +841,19 @@ public class DzikirBoard extends CanvasActivity {
 
 	private void handleIntent() {
 		Uri data = getIntent().getData();
-		if(data != null && data.getHost().contains("dzikirpagi.zaitunlabs.com")){
+		if(data != null && data.toString().contains("dzikirpagi")){
 			subHeaderTitle = "Dzikir di waktu Pagi";
 			waktu = "pagi";
-		} else if(data != null && data.getHost().contains("dzikirpetang.zaitunlabs.com")){
+		} else if(data != null && data.toString().contains("dzikirpetang")){
 			subHeaderTitle = "Dzikir di waktu Petang";
 			waktu = "petang";
-		} else if(data != null && data.getHost().contains("dzikirsubuh.zaitunlabs.com")){
+		} else if(data != null && data.toString().contains("dzikirsubuh")){
 			subHeaderTitle = "Subuh";
 			waktu = "subuh";
-		}else if(data != null && data.getHost().contains("dzikirzhuhur.zaitunlabs.com")){
+		}else if(data != null && data.toString().contains("dzikirzhuhur")){
 			subHeaderTitle = "Zhuhur, Ashar, Isya";
 			waktu = "dz-a-i";
-		}else if(data != null && data.getHost().contains("dzikirmaghrib.zaitunlabs.com")){
+		}else if(data != null && data.toString().contains("dzikirmaghrib")){
 			subHeaderTitle = "Maghrib";
 			waktu = "maghrib";
 		}
