@@ -78,7 +78,7 @@ public class PageListAdapter extends BaseAdapter{
 		ViewHolder holder = null;
 
 		boolean isDone = false;
-		long lastRead = Prefs.with(context).getLong("last-read:"+subHeaderTitle+":"+imageList.get(position), 0);
+		long lastRead = Prefs.with(context, false).getLong("last-read:"+subHeaderTitle+":"+position, 0);
 		Date lastReadDate = new Date();
 		lastReadDate.setTime(lastRead);
 		if(DateStringUtil.compareToDay(lastReadDate,new Date(), Locale.getDefault())==0){

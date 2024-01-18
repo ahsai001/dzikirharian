@@ -161,7 +161,6 @@ public class DzikirBoard extends CanvasActivity {
 		headerSection.getShiftPositionHandler().addRectToDimensionState(0, 0, 100, 12);
 		headerSection.getShiftPositionHandler().addRectToDimensionState(0, -12, 100, 12);
 		headerSection.addViewWithFrame(headerText, 0, 0, 100, 100);
-		
 
 		// subheader
 		ASTextView subHeaderText = new ASTextView(this);
@@ -377,10 +376,10 @@ public class DzikirBoard extends CanvasActivity {
 
 				if(doChange){
 					if(isDone){
-						Prefs.with(DzikirBoard.this).remove("last-read:" + subHeaderTitle + ":" + bacaanList.get(navHandler.getIndex()));
+						Prefs.with(DzikirBoard.this, false).remove("last-read:" + subHeaderTitle + ":" + navHandler.getIndex());
 						reloadCounterImage(false);
 					} else {
-						Prefs.with(DzikirBoard.this).save("last-read:" + subHeaderTitle + ":" + bacaanList.get(navHandler.getIndex()), new Date().getTime());
+						Prefs.with(DzikirBoard.this, false).save("last-read:" + subHeaderTitle + ":" + navHandler.getIndex(), new Date().getTime());
 						reloadCounterImage(true);
 					}
 				} else {
@@ -892,7 +891,7 @@ public class DzikirBoard extends CanvasActivity {
 
 
 	private boolean isDone(){
-		long lastRead = Prefs.with(DzikirBoard.this).getLong("last-read:"+subHeaderTitle+":"+bacaanList.get(navHandler.getIndex()), 0);
+		long lastRead = Prefs.with(DzikirBoard.this, false).getLong("last-read:"+subHeaderTitle+":"+navHandler.getIndex(), 0);
 		Date lastReadDate = new Date();
 		lastReadDate.setTime(lastRead);
 		return DateStringUtil.compareToDay(lastReadDate,new Date(), Locale.getDefault())==0;

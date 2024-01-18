@@ -1,7 +1,11 @@
 [
     {
+        "item": "version 1.23.40",
+        "description": "- perbaikan menu 'pilih halaman'\n- menghapus bagian kosong pada sisi bawah dzikirboard\n- perbaikan link cepet ke aplikasi ini"
+    },
+    {
         "item": "version 1.23.31",
-        "description": "- menambah fitur done di dzikirboard\n- menambar menu lihat dalil dan mode baca luas di dzikirboard\n- menambah link cepet ke aplikasi ini"
+        "description": "- menambah fitur done di dzikirboard\n- menambah menu lihat dalil dan mode baca luas di dzikirboard\n- menambah link cepet ke aplikasi ini"
     },
     {
         "item": "version 1.20.29.54",
