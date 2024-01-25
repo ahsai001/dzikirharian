@@ -11,8 +11,8 @@
       "type": "SINGLE",
       "filters": [],
       "properties": [],
-      "versionCode": 32,
-      "versionName": "1.23.40",
+      "versionCode": 33,
+      "versionName": "1.23.42",
       "enabled": true,
       "outputFile": "dzikirHarianZL-release.apk"
     }
