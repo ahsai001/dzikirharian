@@ -182,7 +182,7 @@ public class DzikirReminderService extends JobIntentService {
 
         Intent reminderIntent = new Intent(this, receiver);
         reminderIntent.setAction(Constanta.ACTION_MANAGE_DZIKIR_REMINDER+IntegerIDUtil.getID(this));
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 212, reminderIntent, 0);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 212, reminderIntent, PendingIntent.FLAG_IMMUTABLE);
 
         alarmMgr.set(AlarmManager.RTC_WAKEUP, time, alarmIntent);
     }
@@ -195,7 +195,7 @@ public class DzikirReminderService extends JobIntentService {
         reminderIntent.putExtra(PARAM_SHOW_FLAG, show);
         reminderIntent.putExtra(PARAM_MESSAGE, message);
         reminderIntent.setAction("com.zaitunlabs.dzikirharian.reminder_alarm"+IntegerIDUtil.getID(this));
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 222, reminderIntent, 0);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 222, reminderIntent, PendingIntent.FLAG_IMMUTABLE);
 
         alarmMgr.set(AlarmManager.RTC_WAKEUP, time, alarmIntent);
 

@@ -82,7 +82,7 @@ public class DzikirReminderReceiver extends BroadcastReceiver {
 
 
             intent.setAction("com.zaitunlabs.dzikirharian.reminder_notification"+ IntegerIDUtil.getID(context));
-            PendingIntent pi = PendingIntent.getActivity(context, 232, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pi = PendingIntent.getActivity(context, 232, intent, PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
